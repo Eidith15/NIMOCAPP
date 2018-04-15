@@ -22,6 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TambahPemasukanActivity" />
+        <activity android:name=".TambahPengeluaranActivity" />
+        <activity android:name=".TambahDivisiActivity" />
+        <activity android:name=".BantuanDetailActivity" />
+        <activity android:name=".EditDivisiActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>
