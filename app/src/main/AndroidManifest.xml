@@ -22,7 +22,7 @@
 
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Awal" >
+        <activity android:name=".Awal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,6 +31,16 @@
         <activity
             android:name=".SignInActivity"
             android:theme="@style/LoginTheme" />
+        <activity android:name=".TambahPemasukanActivity" />
+        <activity android:name=".TambahPengeluaranActivity" />
+        <activity android:name=".TambahDivisiActivity" />
+        <activity android:name=".BantuanDetailActivity" />
+        <activity android:name=".EditDivisiActivity" />
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".BerandaActivity" />
+        <activity android:name=".CatatanKeuanganActivity"></activity>
+        <activity android:name=".TambahBukuKeuanganActivity" />
+        <activity android:name=".EditBukuKeuanganActivity" />
     </application>
 
 </manifest>
