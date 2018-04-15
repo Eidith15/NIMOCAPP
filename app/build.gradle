@@ -28,6 +28,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
+    //material dialog
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+
 
     //MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
