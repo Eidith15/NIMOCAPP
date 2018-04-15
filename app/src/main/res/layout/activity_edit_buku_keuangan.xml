@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditBukuKeuanganActivity">
+
+    <TextView
+        android:id="@+id/eBuku"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama Buku"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="35dp"/>
+
+    <EditText
+        android:id="@+id/textBuku"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eBuku"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"/>
+
+    <TextView
+        android:id="@+id/eKet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Keterangan"
+        android:layout_below="@+id/textBuku"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="35dp"/>
+
+    <EditText
+        android:id="@+id/textKet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eKet"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:lines="6"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:scrollHorizontally="false"/>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="137dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textKet"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="50dp"
+        android:text="Cancel" />
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="137dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textBuku"
+        android:layout_alignTop="@+id/btnCancel"
+        android:text="Edit" />
+
+</RelativeLayout>

@@ -28,6 +28,11 @@
         <activity android:name=".BantuanDetailActivity" />
         <activity android:name=".EditDivisiActivity" />
         <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".BerandaActivity" />
+        <activity android:name=".CatatanKeuanganActivity"></activity>
+        <activity android:name=".TambahBukuKeuanganActivity" />
+        <activity android:name=".EditBukuKeuanganActivity" />
+
     </application>
 
 </manifest>
