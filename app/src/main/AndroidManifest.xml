@@ -12,24 +12,24 @@
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         </activity>
-
         <activity
-            android:name=".DashboardBukuActivity"
-            android:label="@string/title_activity_dashboard_buku"
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Awal">
+        <activity android:name=".SignInActivity"
+            android:theme="@style/LoginTheme">
         </activity>
         <activity
-            android:name=".SignInActivity"
-            android:theme="@style/LoginTheme" />
+            android:name=".DashboardBukuActivity"
+            android:label="@string/title_activity_dashboard_buku"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".SignUpActivity"
+            android:theme="@style/LoginTheme"/>
         <activity android:name=".TambahPemasukanActivity" />
         <activity android:name=".TambahPengeluaranActivity" />
         <activity android:name=".TambahDivisiActivity" />

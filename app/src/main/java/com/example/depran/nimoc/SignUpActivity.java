@@ -5,17 +5,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class TambahBukuKeuanganActivity extends AppCompatActivity {
+/**
+ * Created by Eidith on 21/04/2018.
+ */
+
+public class SignUpActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tambah_buku_keuangan);
+        setContentView(R.layout.activity_sign_up);
 
-        findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TambahBukuKeuanganActivity.this, BerandaActivity.class);
+                Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                 startActivity(intent);
             }
         });

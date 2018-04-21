@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SignInActivity extends AppCompatActivity {
@@ -24,18 +25,29 @@ public class SignInActivity extends AppCompatActivity {
 
         us = findViewById(R.id.username);
         pass = findViewById(R.id.password);
+
         findViewById(R.id.btnSignIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String user = us.getText().toString().trim();
                 String pswd = pass.getText().toString().trim();
-                if (user.equalsIgnoreCase("153040050") && pswd.equalsIgnoreCase("ade pranaya")) {
+                if (user.equalsIgnoreCase("username") && pswd.equalsIgnoreCase("password")) {
                     Session.createSignInSession(SignInActivity.this, user);
-                    startActivity(new Intent(SignInActivity.this, DashboardBukuActivity.class));
+                    startActivity(new Intent(SignInActivity.this, BerandaActivity.class));
                     finish();
                 } else {
                     Toast.makeText(SignInActivity.this, "user invalid", Toast.LENGTH_SHORT).show();
                 }
-            }        });
+            }
+        });
+
+        findViewById(R.id.btnSignUp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }
