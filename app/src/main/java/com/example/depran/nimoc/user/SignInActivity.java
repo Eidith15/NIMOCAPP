@@ -1,5 +1,5 @@
 
-package com.example.depran.nimoc;
+package com.example.depran.nimoc.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.depran.nimoc.buku.BerandaActivity;
+import com.example.depran.nimoc.R;
+import com.example.depran.nimoc.function.Session;
 
 public class SignInActivity extends AppCompatActivity {
     EditText us, pass;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditBukuKeuanganActivity">
+    tools:context=".buku.EditBukuKeuanganActivity">
 
     <TextView
         android:id="@+id/eBuku"

@@ -1,9 +1,11 @@
-package com.example.depran.nimoc;
+package com.example.depran.nimoc.user;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.example.depran.nimoc.R;
 
 /**
  * Created by Eidith on 21/04/2018.
