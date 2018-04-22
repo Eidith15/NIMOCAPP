@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        //hide status bar
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
         mdotLayout = (LinearLayout) findViewById(R.id.dotsLayout);
@@ -91,6 +96,12 @@ public class MainActivity extends AppCompatActivity {
                 mBackbtn.setVisibility(View.INVISIBLE);
 
                 mNextbtn.setText("Next");
+                mNextbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mSlideViewPager.setCurrentItem(mCurrentPage+1);
+                    }
+                });
                 mBackbtn.setText("");
             }else if(i == mDots.length -1){
                 mNextbtn.setEnabled(true);
@@ -113,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
                 mBackbtn.setVisibility(View.VISIBLE);
 
                 mNextbtn.setText("Next");
+                mNextbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mSlideViewPager.setCurrentItem(mCurrentPage+1);
+                    }
+                });
                 mBackbtn.setText("Back");
 
             }
