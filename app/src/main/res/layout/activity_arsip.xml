@@ -1,54 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".buku.BerandaActivity">
+    tools:context=".arsip.ArsipActivity">
 
     <ImageView
-        android:id="@+id/gberanda"
+        android:id="@+id/imgArsipKososng"
         android:layout_width="match_parent"
         android:layout_height="280dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="51dp"
-        android:src="@drawable/icon" />
+        android:src="@drawable/archive" />
 
     <TextView
-        android:id="@+id/ckk"
+        android:id="@+id/akk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/gberanda"
-        android:text="Catatan keuangan kosong"
+        android:layout_below="@+id/imgArsipKososng"
+        android:text="Arsip keuangan kosong"
         android:layout_marginTop="10dp"
         android:textAlignment="center"/>
 
     <TextView
-        android:id="@+id/tap"
+        android:id="@+id/tapArsip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/ckk"
-        android:text="Tap tombol + untuk memulai"
-        android:textAlignment="center"/>
-
-    <TextView
-        android:id="@+id/pcttn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tap"
-        android:text="Pencatatan"
+        android:layout_below="@+id/akk"
+        android:text="Arsipkan Buku keuangan anda"
         android:textAlignment="center"/>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnTambah"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnTambahArsip"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add_white_24dp"
-        app:backgroundTint="@android:color/black"
+        android:backgroundTint="@android:color/black"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
         android:layout_alignParentBottom="true"

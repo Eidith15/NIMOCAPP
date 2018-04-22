@@ -27,21 +27,21 @@ public class SliderAdapter extends PagerAdapter {
 
     //arrays
     public int[] slide_images = {
-            R.drawable.awal1,
-            R.drawable.awal2,
-            R.drawable.awal3
+            R.drawable.awal1icon,
+            R.drawable.awal2icon,
+            R.drawable.awal3icon
     };
 
     public String[] slide_headings = {
-            "AAA",
-            "BBB",
-            "CCC"
+            "What Is NiMoC ?",
+            "Easy Organizing",
+            "Easy and Efficient"
     };
 
     public String[] slide_content = {
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed ornare in lacus eu efficitur. Maecenas vulputate pretium magna ut molestie. Duis quis purus commodo, rhoncus turpis sit ame",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed ornare in lacus eu efficitur. Maecenas vulputate pretium magna ut molestie. Duis quis purus commodo, rhoncus turpis sit ame",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed ornare in lacus eu efficitur. Maecenas vulputate pretium magna ut molestie. Duis quis purus commodo, rhoncus turpis sit ame"
+            "Nimoc merupakan aplikasi keuangan untuk memudahkan setiap organisasi didalam mengatur catatan keuangan",
+            "Memudahkan organisasi untuk mengatur catatan keuangan dari setiap divisi yang ada pada organisasinya",
+            "Dengan menggunakan aplikasi keuangan daru nimoc ini memudahkan setiap organisasi dan tidak membuat sulit untuk membuat laporan keuangan"
     };
 
     @Override
