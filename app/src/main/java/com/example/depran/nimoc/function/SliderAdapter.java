@@ -1,4 +1,4 @@
-package com.example.depran.nimoc;
+package com.example.depran.nimoc.function;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.depran.nimoc.R;
 
 /**
  * Created by Eidith on 22/04/2018.

@@ -1,4 +1,4 @@
-package com.example.depran.nimoc;
+package com.example.depran.nimoc.function;
 
 import android.content.Context;
 import android.content.SharedPreferences;

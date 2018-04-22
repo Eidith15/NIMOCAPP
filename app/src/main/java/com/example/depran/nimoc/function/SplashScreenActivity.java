@@ -1,4 +1,4 @@
-package com.example.depran.nimoc;
+package com.example.depran.nimoc.function;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.depran.nimoc.R;
+import com.example.depran.nimoc.buku.DashboardBukuActivity;
+import com.example.depran.nimoc.user.SignInActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
