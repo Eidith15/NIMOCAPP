@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.depran.nimoc.MainActivity;
 import com.example.depran.nimoc.buku.BerandaActivity;
 import com.example.depran.nimoc.R;
 import com.example.depran.nimoc.utils.Session;
@@ -118,8 +117,8 @@ public class SignInActivity extends AppCompatActivity {
                     //pengisian data username ke Session...
                     Session.createLoginSession(SignInActivity.this,idUser, username, password);
 
-                    //Toast.makeText(Login2Activity.this, "Pindah ke MainActivity",Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                    //Toast.makeText(Login2Activity.this, "Pindah ke BerandaActivity",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(SignInActivity.this, BerandaActivity.class));
                     SignInActivity.this.finish();
 
                 } else {
