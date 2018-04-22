@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.depran.nimoc.R;
-import com.example.depran.nimoc.user.SignInActivity;
+import com.example.depran.nimoc.user.SignInFragment;
 import com.example.depran.nimoc.utils.Session;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -151,7 +151,7 @@ public class DashboardBukuActivity extends AppCompatActivity
                     @Override
                     public void onClick(MaterialDialog dialog, DialogAction which) {
                         Session.logout(DashboardBukuActivity.this);
-                        startActivity(new Intent(DashboardBukuActivity.this, SignInActivity.class));
+                        startActivity(new Intent(DashboardBukuActivity.this, SignInFragment.class));
                         finish();
                     }
                 })

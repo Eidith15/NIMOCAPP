@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.depran.nimoc.function.SliderAdapter;
-import com.example.depran.nimoc.user.SignInActivity;
+import com.example.depran.nimoc.user.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             mDots[i] = new TextView(this);
             mDots[i].setText(Html.fromHtml("&#8226"));
             mDots[i].setTextSize(35);
-            mDots[i].setTextColor(getResources().getColor(R.color.background));
+            mDots[i].setTextColor(getResources().getColor(R.color.white));
 
             mdotLayout.addView(mDots[i]);
         }
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 mNextbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                     }

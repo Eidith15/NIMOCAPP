@@ -22,15 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".user.SignInActivity"
-            android:theme="@style/LoginTheme">
-        </activity>
+        <activity
+            android:name=".user.LoginActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity
             android:name=".buku.DashboardBukuActivity"
             android:label="@string/title_activity_dashboard_buku"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".user.SignUpActivity"
-            android:theme="@style/LoginTheme"/>
         <activity android:name=".buku.TambahPemasukanActivity" />
         <activity android:name=".buku.TambahPengeluaranActivity" />
         <activity android:name=".divisi.TambahDivisiActivity" />
