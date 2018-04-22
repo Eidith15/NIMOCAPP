@@ -7,4 +7,22 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">login</string>
+    <string name="nama">Fullname</string>
+    <string name="nrp">NRP</string>
+    <string name="program_studi">Program Studi</string>
+    <string name="no_telpon">No. Telpon</string>
+    <string name="pria">pria</string>
+    <string name="perempuan">perempuan</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="alamat">Alamat</string>
+    <string name="create">create</string>
+    <string name="unpas">Universitas Pasundan - 2018</string>
+    <string name="email">Email</string>
+    <string name="title_logout">Perhatian</string>
+    <string name="content_logout">Apakah anda yakin untuk logout?</string>
+    <string name="agree">Ya</string>
+    <string name="disagree">Tidak</string>
 </resources>

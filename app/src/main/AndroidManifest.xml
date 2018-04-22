@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.depran.nimoc">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,30 +10,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
+        <activity
+            android:name=".function.SplashScreenActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-            android:name=".DashboardBukuActivity"
-            android:label="@string/title_activity_dashboard_buku"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TambahPemasukanActivity" />
-        <activity android:name=".TambahPengeluaranActivity" />
-        <activity android:name=".TambahDivisiActivity" />
-        <activity android:name=".BantuanDetailActivity" />
-        <activity android:name=".EditDivisiActivity" />
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".BerandaActivity" />
-        <activity android:name=".CatatanKeuanganActivity"></activity>
-        <activity android:name=".TambahBukuKeuanganActivity" />
-        <activity android:name=".EditBukuKeuanganActivity" />
-
+        <activity android:name=".user.SignInActivity"
+            android:theme="@style/LoginTheme">
+        </activity>
+        <activity
+            android:name=".buku.DashboardBukuActivity"
+            android:label="@string/title_activity_dashboard_buku"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".user.SignUpActivity"
+            android:theme="@style/LoginTheme"/>
+        <activity android:name=".buku.TambahPemasukanActivity" />
+        <activity android:name=".buku.TambahPengeluaranActivity" />
+        <activity android:name=".divisi.TambahDivisiActivity" />
+        <activity android:name=".etc.BantuanDetailActivity" />
+        <activity android:name=".divisi.EditDivisiActivity" />
+        <activity android:name=".etc.ProfileActivity"></activity>
+        <activity android:name=".buku.BerandaActivity" />
+        <activity android:name=".buku.CatatanKeuanganActivity"></activity>
+        <activity android:name=".buku.TambahBukuKeuanganActivity" />
+        <activity android:name=".buku.EditBukuKeuanganActivity" />
     </application>
 
 </manifest>

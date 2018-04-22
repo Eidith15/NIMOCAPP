@@ -17,6 +17,10 @@
     <item android:title="Communicate">
         <menu>
             <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Settings" />
+            <item
                 android:id="@+id/nav_help"
                 android:icon="@drawable/ic_help_black_24dp"
                 android:title="Bantuan" />
@@ -29,9 +33,9 @@
                 android:icon="@drawable/ic_info_black_24dp"
                 android:title="About" />
             <item
-                android:id="@+id/nav_logoutut"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_power_settings_new_black_24dp"
-                android:title="About" />
+                android:title="logout" />
         </menu>
     </item>
 

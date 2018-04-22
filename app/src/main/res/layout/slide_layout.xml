@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/slideImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/awal1" />
+
+    <TextView
+        android:id="@+id/textHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:paddingTop="200dp"
+        android:layout_centerHorizontal="true"
+        android:text="HEADER"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textcontent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textHeader"
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed ornare in lacus eu efficitur. Maecenas vulputate pretium magna ut molestie. Duis quis purus commodo, rhoncus turpis sit ame" />
+
+</RelativeLayout>

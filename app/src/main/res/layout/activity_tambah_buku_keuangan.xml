@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TambahBukuKeuanganActivity">
+    tools:context=".buku.TambahBukuKeuanganActivity">
 
     <TextView
         android:id="@+id/tBuku"
@@ -15,7 +15,7 @@
         android:layout_marginLeft="35dp"/>
 
     <EditText
-        android:id="@+id/textBuku"
+        android:id="@+id/ttextBuku"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tBuku"
@@ -27,12 +27,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Keterangan"
-        android:layout_below="@+id/textBuku"
+        android:layout_below="@+id/ttextBuku"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="35dp"/>
 
     <EditText
-        android:id="@+id/textKet"
+        android:id="@+id/ttextKet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tKet"
@@ -51,7 +51,7 @@
         android:id="@+id/btnCancel"
         android:layout_width="137dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textKet"
+        android:layout_below="@+id/ttextKet"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginTop="50dp"
@@ -61,7 +61,7 @@
         android:id="@+id/btnAdd"
         android:layout_width="137dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textBuku"
+        android:layout_alignEnd="@+id/ttextBuku"
         android:layout_alignTop="@+id/btnCancel"
         android:text="Tambah" />
 
