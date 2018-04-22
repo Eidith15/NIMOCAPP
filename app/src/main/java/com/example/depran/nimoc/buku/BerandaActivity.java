@@ -11,14 +11,13 @@ import android.view.View;
 
 import com.example.depran.nimoc.R;
 
-public class BerandaActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class BerandaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        
 
         findViewById(R.id.btnTambah).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,8 +28,4 @@ public class BerandaActivity extends AppCompatActivity implements NavigationView
         });
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
-    }
 }

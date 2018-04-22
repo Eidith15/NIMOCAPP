@@ -12,8 +12,9 @@ import android.widget.TextView;
 
 import com.example.depran.nimoc.function.SliderAdapter;
 import com.example.depran.nimoc.user.SignInActivity;
+import com.example.depran.nimoc.utils.Session;
 
-public class MainActivity extends AppCompatActivity {
+public class FirstSliderActivity extends AppCompatActivity {
 
     private ViewPager mSlideViewPager;
     private LinearLayout mdotLayout;
@@ -33,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
 //        //hide status bar
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            Window w = getWindow(); // in Activity's onCreate() for instance
+//            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+////            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE|View.SYSTEM_UI_FLAG_FULLSCREEN);
+////            Window window = getWindow(); // in Activity's onCreate() for instance
+////            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+////            window.setStatusBarColor(Color.TRANSPARENT);
+//        }
 
         mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
         mdotLayout = (LinearLayout) findViewById(R.id.dotsLayout);
@@ -115,7 +125,8 @@ public class MainActivity extends AppCompatActivity {
                 mNextbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+                        Session.createAwalSession(FirstSliderActivity.this, false);
+                        Intent intent = new Intent(FirstSliderActivity.this, SignInActivity.class);
                         startActivity(intent);
                         finish();
                     }
