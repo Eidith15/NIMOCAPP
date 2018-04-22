@@ -110,9 +110,6 @@ public class SignInActivity extends AppCompatActivity {
                     String idUser = object.getJSONObject("data").getString("id_u") ;
                     String username = object.getJSONObject("data").getString("username") ;
                     String password = object.getJSONObject("data").getString("password") ;
-//                    String name = object.getJSONObject("data").getString("name") ;
-//                    String noTelp = object.getJSONObject("data").getString("no_telp") ;
-//                    String photo = object.getJSONObject("data").getString("photo") ;
 
                     //pengisian data username ke Session...
                     Session.createLoginSession(SignInActivity.this,idUser, username, password);
