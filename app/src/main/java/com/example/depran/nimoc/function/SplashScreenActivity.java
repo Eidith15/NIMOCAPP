@@ -8,9 +8,16 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.depran.nimoc.FirstSliderActivity;
 import com.example.depran.nimoc.R;
+
 import com.example.depran.nimoc.buku.DashboardBukuActivity;
+import com.example.depran.nimoc.user.LoginActivity;
 import com.example.depran.nimoc.user.SignInFragment;
+
+import com.example.depran.nimoc.buku.BerandaActivity;
+
+
 import com.example.depran.nimoc.utils.Session;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -28,10 +35,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         Thread background = new Thread() {
             public void run() {
                 try {
-                    sleep(3000);
+                    try {
+                        sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     Intent intent = null;
                     SharedPreferences preferences = SplashScreenActivity.this
                             .getSharedPreferences(Session.PREF_NAME, 0);
+
 
                     try {
                         String id = preferences.getString("username", null);
@@ -39,6 +51,20 @@ public class SplashScreenActivity extends AppCompatActivity {
                         intent = new Intent(SplashScreenActivity.this, DashboardBukuActivity.class);
                     } catch (Exception e) {
                         intent = new Intent(SplashScreenActivity.this, SignInFragment.class);
+
+
+                    Log.e("awalan : ", String.valueOf(isFirstTimeStart()));
+                    if ( !isFirstTimeStart()) {
+                        try {
+                            String id = preferences.getString("username", null);
+                            Log.e("username", id);
+                            intent = new Intent(SplashScreenActivity.this, BerandaActivity.class);
+                        } catch (Exception e) {
+                            intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                        }
+                    }else{
+                        intent = new Intent(SplashScreenActivity.this, FirstSliderActivity.class);
+
                     }
                     startActivity(intent);
                     finish();
@@ -46,6 +72,11 @@ public class SplashScreenActivity extends AppCompatActivity {
                 }
             }
         };
-        background.start();
+
+    }
+    private boolean isFirstTimeStart(){
+        SharedPreferences preferencesIntro = SplashScreenActivity.this
+                .getSharedPreferences(Session.PREF_NAME_INTRO, 0);
+        return preferencesIntro.getBoolean("awalan", true);
     }
 }

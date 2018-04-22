@@ -13,18 +13,20 @@
         <activity
             android:name=".function.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".user.LoginActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"/>
+            android:name=".FirstSliderActivity"
+            android:theme="@style/AwalTheme">
+        </activity>
+        <activity android:name=".user.LoginActivity"
+            android:theme="@style/LoginTheme">
+        </activity>
+
         <activity
             android:name=".buku.DashboardBukuActivity"
             android:label="@string/title_activity_dashboard_buku"
@@ -40,5 +42,4 @@
         <activity android:name=".buku.TambahBukuKeuanganActivity" />
         <activity android:name=".buku.EditBukuKeuanganActivity" />
     </application>
-
 </manifest>

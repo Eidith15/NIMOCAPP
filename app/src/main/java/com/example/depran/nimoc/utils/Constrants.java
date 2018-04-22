@@ -13,6 +13,11 @@ public class Constrants {
     //login / sign in / masuk
     public static final String URL_LOGIN = URL + "user_apps";
 
+
+    public static final String URL_GET_BUKU= URL + "buku_ctt_keuangan?status_simpan=0";
+    public static final String URL_GET_DIVISI= URL + "divisi";
+    public static final String URL_GET_ARSIP= URL + "buku_ctt_keuangan?status_simpan=1";
+
 //    public static final String URL_ADD_POSTING = URL + "posting.php?action=add_posting";
 //    public static final String URL_GET_POSTING = URL + "posting.php?action=get_posting";
 
