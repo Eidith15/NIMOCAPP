@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import com.example.depran.nimoc.R;
 import com.example.depran.nimoc.buku.DashboardBukuActivity;
 import com.example.depran.nimoc.user.SignInActivity;
+import com.example.depran.nimoc.utils.Session;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
