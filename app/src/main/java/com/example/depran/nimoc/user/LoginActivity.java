@@ -21,11 +21,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button btnSignUp;
     private Button btnSignIn;
-    private Button btnGoLogin;
-    private Button btnGoSignUp;
-    private EditText username;
-    private EditText password;
-    private TextView alert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +31,6 @@ public class LoginActivity extends AppCompatActivity {
 
         btnSignIn = (Button) findViewById(R.id.btnLoginMenu);
         btnSignUp = (Button) findViewById(R.id.btnSignUpMenu);
-        btnGoLogin = (Button) findViewById(R.id.btnLogin);
-        btnGoSignUp = (Button) findViewById(R.id.btnSignUp);
-        username = (EditText) findViewById(R.id.txtUsername);
-        password = (EditText) findViewById(R.id.txtPassword);
-        alert = (TextView) findViewById(R.id.txtAlert);
 
 
 
@@ -68,18 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btnGoLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (username.equals("aa") && password.equals("aa")){
-                    Intent intent = new Intent(LoginActivity.this, BerandaActivity.class);
-                    startActivity(intent);
-                    finish();
-                }else{
-                    alert.setText("Username atau Password Salah!!");
-                }
-            }
-        });
+
     }
 
 

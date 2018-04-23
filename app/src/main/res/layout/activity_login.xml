@@ -38,6 +38,7 @@
         android:textSize="32dp" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/btnLoginMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +52,7 @@
         android:textSize="24dp" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/btnSignUpMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

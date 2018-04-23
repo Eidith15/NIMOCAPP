@@ -35,22 +35,10 @@ public class SplashScreenActivity extends AppCompatActivity {
         Thread background = new Thread() {
             public void run() {
                 try {
-                    try {
-                        sleep(3000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    sleep(3000);
                     Intent intent = null;
                     SharedPreferences preferences = SplashScreenActivity.this
                             .getSharedPreferences(Session.PREF_NAME, 0);
-
-
-                    try {
-                        String id = preferences.getString("username", null);
-                        Log.e("username", id);
-                        intent = new Intent(SplashScreenActivity.this, DashboardBukuActivity.class);
-                    } catch (Exception e) {
-                        intent = new Intent(SplashScreenActivity.this, SignInFragment.class);
 
 
                     Log.e("awalan : ", String.valueOf(isFirstTimeStart()));
@@ -64,7 +52,6 @@ public class SplashScreenActivity extends AppCompatActivity {
                         }
                     }else{
                         intent = new Intent(SplashScreenActivity.this, FirstSliderActivity.class);
-
                     }
                     startActivity(intent);
                     finish();
@@ -72,7 +59,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 }
             }
         };
-
+        background.start();
     }
     private boolean isFirstTimeStart(){
         SharedPreferences preferencesIntro = SplashScreenActivity.this
