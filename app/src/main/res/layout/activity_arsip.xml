@@ -35,15 +35,4 @@
         android:text="Arsipkan Buku keuangan anda"
         android:textAlignment="center"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnTambahArsip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_white_24dp"
-        android:backgroundTint="@android:color/black"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
-
 </RelativeLayout>

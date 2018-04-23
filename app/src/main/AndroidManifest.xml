@@ -41,5 +41,7 @@
         <activity android:name=".buku.CatatanKeuanganActivity"></activity>
         <activity android:name=".buku.TambahBukuKeuanganActivity" />
         <activity android:name=".buku.EditBukuKeuanganActivity" />
+        <activity android:name=".arsip.ArsipActivity" />
+        <activity android:name=".arsip.CatatanArsipActivity" />
     </application>
 </manifest>

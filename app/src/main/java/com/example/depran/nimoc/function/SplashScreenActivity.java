@@ -46,7 +46,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                         try {
                             String id = preferences.getString("username", null);
                             Log.e("username", id);
-                            intent = new Intent(SplashScreenActivity.this, BerandaActivity.class);
+                            intent = new Intent(SplashScreenActivity.this, DashboardBukuActivity.class);
                         } catch (Exception e) {
                             intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                         }

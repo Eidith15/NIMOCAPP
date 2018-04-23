@@ -15,7 +15,10 @@ import android.view.MenuItem;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.depran.nimoc.R;
-import com.example.depran.nimoc.user.SignInFragment;
+import com.example.depran.nimoc.arsip.ArsipActivity;
+import com.example.depran.nimoc.etc.BantuanDetailActivity;
+import com.example.depran.nimoc.etc.ProfileActivity;
+import com.example.depran.nimoc.user.LoginActivity;
 import com.example.depran.nimoc.utils.Session;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -69,8 +72,6 @@ public class DashboardBukuActivity extends AppCompatActivity
         ArrayList<PieEntry> yValues = new ArrayList<>();
         yValues.add(new PieEntry(34f, "PartyA"));
         yValues.add(new PieEntry(34f, "PartyB"));
-        yValues.add(new PieEntry(34f, "PartyC"));
-        yValues.add(new PieEntry(94f, "PartyD"));
 
         PieDataSet dataSet = new PieDataSet(yValues, "Tes");
         dataSet.setSliceSpace(3f);
@@ -109,7 +110,7 @@ public class DashboardBukuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_edit_buku) {
             return true;
         }
 
@@ -124,14 +125,17 @@ public class DashboardBukuActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
+            startActivity(new Intent(DashboardBukuActivity.this, BerandaActivity.class));
         } else if (id == R.id.nav_archive) {
-
+            startActivity(new Intent(DashboardBukuActivity.this, ArsipActivity.class));
+        } else if (id == R.id.nav_setting) {
+            startActivity(new Intent(DashboardBukuActivity.this, ProfileActivity.class));
         } else if (id == R.id.nav_help) {
-
+            startActivity(new Intent(DashboardBukuActivity.this, BantuanDetailActivity.class));
         } else if (id == R.id.nav_chat) {
-
+            startActivity(new Intent(DashboardBukuActivity.this, LoginActivity.class));
         } else if (id == R.id.nav_about) {
-
+//            startActivity(new Intent(DashboardBukuActivity.this, Abou.class));
         } else if (id == R.id.nav_logout) {
                 konfirmasiKeluar();
         }
@@ -151,7 +155,7 @@ public class DashboardBukuActivity extends AppCompatActivity
                     @Override
                     public void onClick(MaterialDialog dialog, DialogAction which) {
                         Session.logout(DashboardBukuActivity.this);
-                        startActivity(new Intent(DashboardBukuActivity.this, SignInFragment.class));
+                        startActivity(new Intent(DashboardBukuActivity.this, LoginActivity.class));
                         finish();
                     }
                 })
