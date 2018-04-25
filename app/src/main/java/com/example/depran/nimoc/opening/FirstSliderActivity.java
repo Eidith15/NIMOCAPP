@@ -1,4 +1,4 @@
-package com.example.depran.nimoc;
+package com.example.depran.nimoc.opening;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.depran.nimoc.R;
 import com.example.depran.nimoc.function.SliderAdapter;
 import com.example.depran.nimoc.user.LoginActivity;
 import com.example.depran.nimoc.utils.Session;

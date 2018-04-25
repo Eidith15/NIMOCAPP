@@ -9,58 +9,19 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".buku.DashboardBukuActivity"
     tools:showIn="@layout/app_bar_dashboard_buku">
-
-    <LinearLayout
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="70dp"
+        android:textSize="14sp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white">
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/piechart"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="70">
+    </com.astuetz.PagerSlidingTabStrip>
+    <FrameLayout
+        android:id="@+id/frameLayoutBuku"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        </com.github.mikephil.charting.charts.PieChart>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="30"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/button_topleft"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="0dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:background="@android:color/white"
-
-                android:padding="20dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_remove_circle_black_24dp" />
-
-            <ImageButton
-                android:id="@+id/button_topRight"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="0dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:background="@android:color/white"
-                android:padding="20dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_add_circle_black_24dp" />
-        </LinearLayout>
-    </LinearLayout>
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

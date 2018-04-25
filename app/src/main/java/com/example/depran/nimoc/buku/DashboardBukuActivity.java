@@ -1,10 +1,12 @@
 package com.example.depran.nimoc.buku;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,11 +16,15 @@ import android.view.MenuItem;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.astuetz.PagerSlidingTabStrip;
+import com.example.depran.nimoc.DashboardBukuFragment;
 import com.example.depran.nimoc.R;
 import com.example.depran.nimoc.arsip.ArsipActivity;
 import com.example.depran.nimoc.etc.BantuanDetailActivity;
 import com.example.depran.nimoc.etc.ProfileActivity;
+import com.example.depran.nimoc.function.SampleFragmentPagerAdapter;
 import com.example.depran.nimoc.user.LoginActivity;
+import com.example.depran.nimoc.user.SignInFragment;
 import com.example.depran.nimoc.utils.Session;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -31,7 +37,6 @@ import java.util.ArrayList;
 public class DashboardBukuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    PieChart pieChart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,34 +62,47 @@ public class DashboardBukuActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        pieChart = (PieChart) findViewById(R.id.piechart);
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager()));
 
-        pieChart.setUsePercentValues(true);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.setExtraOffsets(5, 10, 5, 5);
+        // Give the PagerSlidingTabStrip the ViewPager
+        PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        // Attach the view pager to the tab strip
+        tabsStrip.setViewPager(viewPager);
+        // Attach the page change listener to tab strip and **not** the view pager inside the activity
+        tabsStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-        pieChart.setDragDecelerationFrictionCoef(0.95f);
+            // This method will be invoked when a new page becomes selected.
+            @Override
+            public void onPageSelected(int position) {
+                // Code goes here
+            }
 
-        pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleColor(Color.WHITE);
-        pieChart.setTransparentCircleRadius(61f);
+            // This method will be invoked when the current page is scrolled
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // Code goes here
+            }
 
-        ArrayList<PieEntry> yValues = new ArrayList<>();
-        yValues.add(new PieEntry(34f, "PartyA"));
-        yValues.add(new PieEntry(34f, "PartyB"));
+            // Called when the scroll state changes:
+            // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // Code goes here
+            }
+        });
 
-        PieDataSet dataSet = new PieDataSet(yValues, "Tes");
-        dataSet.setSliceSpace(3f);
-        dataSet.setSelectionShift(5f);
-        dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+//        changeContent(DashboardBukuFragment.newInstance(this));
 
-        PieData data = new PieData((dataSet));
-        data.setValueTextSize(10f);
-        data.setValueTextColor(Color.YELLOW);
 
-        pieChart.setData(data);
     }
 
+    public void changeContent(Fragment fragment){
+        getFragmentManager().beginTransaction()
+                .replace(R.id.frameLayoutBuku, fragment)
+                .commitAllowingStateLoss();
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

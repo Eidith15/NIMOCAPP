@@ -1,4 +1,4 @@
-package com.example.depran.nimoc.function;
+package com.example.depran.nimoc.opening;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,14 +8,10 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.depran.nimoc.FirstSliderActivity;
 import com.example.depran.nimoc.R;
 
 import com.example.depran.nimoc.buku.DashboardBukuActivity;
 import com.example.depran.nimoc.user.LoginActivity;
-import com.example.depran.nimoc.user.SignInFragment;
-
-import com.example.depran.nimoc.buku.BerandaActivity;
 
 
 import com.example.depran.nimoc.utils.Session;

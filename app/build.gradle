@@ -31,6 +31,8 @@ dependencies {
     //material dialog
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 
+    //Pager Sliding
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
 
     //MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
