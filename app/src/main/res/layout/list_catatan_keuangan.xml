@@ -4,14 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".buku.CatatanKeuanganActivity">
+    android:layout_height="wrap_content">
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:isScrollContainer="true">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -28,14 +22,25 @@
                 android:clickable="true"
                 android:focusable="true">
 
+                <TextView
+                    android:id="@+id/id_buku"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@android:color/black"
+                    android:textSize="1sp"
+                    android:visibility="invisible"/>
+
                 <ImageView
-                    android:layout_width="50dp"
+                    android:id="@+id/arsip_btn"
+                    android:padding="5dp"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     app:srcCompat="@drawable/ic_archive_black_24dp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="7"
                     android:orientation="vertical"
@@ -43,7 +48,9 @@
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp">
 
+
                     <TextView
+                        android:id="@+id/nama_buku"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="DKM UAB"
@@ -52,7 +59,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -80,6 +87,4 @@
             </TableRow>
 
         </TableLayout>
-    </ScrollView>
-
 </LinearLayout>

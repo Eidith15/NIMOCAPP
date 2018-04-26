@@ -14,7 +14,9 @@ public class Constrants {
     public static final String URL_LOGIN = URL + "user_apps";
 
 
-    public static final String URL_GET_BUKU= URL + "buku_ctt_keuangan?status_simpan=0";
+    public static final String URL_GET_BUKU= URL + "buku_ctt_keuangan?status_simpan=0"; //read
+    public static final String URL_BUKU= URL + "buku_ctt_keuangan"; //add, update, delete,
+
     public static final String URL_GET_DIVISI= URL + "divisi";
     public static final String URL_GET_ARSIP= URL + "buku_ctt_keuangan?status_simpan=1";
 

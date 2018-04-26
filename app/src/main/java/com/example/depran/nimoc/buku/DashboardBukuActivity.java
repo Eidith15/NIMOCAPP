@@ -1,8 +1,10 @@
 package com.example.depran.nimoc.buku;
 
 import android.app.Fragment;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,13 +15,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.astuetz.PagerSlidingTabStrip;
 import com.example.depran.nimoc.DashboardBukuFragment;
 import com.example.depran.nimoc.R;
+import com.example.depran.nimoc.RiwayatFragment;
 import com.example.depran.nimoc.arsip.ArsipActivity;
+import com.example.depran.nimoc.etc.BantuanActivity;
 import com.example.depran.nimoc.etc.BantuanDetailActivity;
 import com.example.depran.nimoc.etc.ProfileActivity;
 import com.example.depran.nimoc.function.SampleFragmentPagerAdapter;
@@ -37,12 +44,14 @@ import java.util.ArrayList;
 public class DashboardBukuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Button dashboardBukuBtn, riwayatBtn, divisiBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_buku);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -62,46 +71,42 @@ public class DashboardBukuActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Get the ViewPager and set it's PagerAdapter so that it can display items
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager()));
-
-        // Give the PagerSlidingTabStrip the ViewPager
-        PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        // Attach the view pager to the tab strip
-        tabsStrip.setViewPager(viewPager);
-        // Attach the page change listener to tab strip and **not** the view pager inside the activity
-        tabsStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            // This method will be invoked when a new page becomes selected.
+        changeContent(DashboardBukuFragment.newInstance(this));
+        dashboardBukuBtn = (Button) findViewById(R.id.dashboard_buku_btn);
+        riwayatBtn = (Button) findViewById(R.id.dashboard_riwayat_btn);
+        divisiBtn = (Button) findViewById(R.id.dashboard_divisi_btn);
+        dashboardBukuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPageSelected(int position) {
-                // Code goes here
-            }
-
-            // This method will be invoked when the current page is scrolled
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                // Code goes here
-            }
-
-            // Called when the scroll state changes:
-            // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                // Code goes here
+            public void onClick(View view) {
+                changeContent(DashboardBukuFragment.newInstance(DashboardBukuActivity.this));
             }
         });
-
-//        changeContent(DashboardBukuFragment.newInstance(this));
-
+        riwayatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeContent(RiwayatFragment.newInstance(DashboardBukuActivity.this));
+            }
+        });
+        divisiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeContent(DashboardBukuFragment.newInstance(DashboardBukuActivity.this));
+            }
+        });
 
     }
 
     public void changeContent(Fragment fragment){
+        //app.Fragment
         getFragmentManager().beginTransaction()
                 .replace(R.id.frameLayoutBuku, fragment)
                 .commitAllowingStateLoss();
+
+        //v4
+//        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+//        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.frameLayoutBuku, fragment);
+//        fragmentTransaction.commit();
     }
     @Override
     public void onBackPressed() {
@@ -142,16 +147,28 @@ public class DashboardBukuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-            startActivity(new Intent(DashboardBukuActivity.this, BerandaActivity.class));
+            finish();
         } else if (id == R.id.nav_archive) {
             startActivity(new Intent(DashboardBukuActivity.this, ArsipActivity.class));
         } else if (id == R.id.nav_setting) {
             startActivity(new Intent(DashboardBukuActivity.this, ProfileActivity.class));
         } else if (id == R.id.nav_help) {
-            startActivity(new Intent(DashboardBukuActivity.this, BantuanDetailActivity.class));
+            startActivity(new Intent(DashboardBukuActivity.this, BantuanActivity.class));
         } else if (id == R.id.nav_chat) {
-            startActivity(new Intent(DashboardBukuActivity.this, LoginActivity.class));
+            Intent i;
+            String mailto = "mailto:ade.pranaya@mail.unpas.ac.id" +
+                    "?cc=" + "" +
+                    "&subject=" + Uri.encode("MASUKAN_NIMOC_FINANCE") +
+                    "&body=" + Uri.encode("");
+
+            i = new Intent(Intent.ACTION_SENDTO);
+            i.setData(Uri.parse(mailto));
+
+            try {
+                startActivity(i);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(DashboardBukuActivity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            }
         } else if (id == R.id.nav_about) {
 //            startActivity(new Intent(DashboardBukuActivity.this, Abou.class));
         } else if (id == R.id.nav_logout) {

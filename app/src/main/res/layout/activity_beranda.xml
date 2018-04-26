@@ -1,57 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_beranda"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".buku.BerandaActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <ImageView
-        android:id="@+id/gberanda"
+    <include
+        layout="@layout/app_bar_beranda_buku"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="51dp"
-        android:src="@drawable/icon" />
+        android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/ckk"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/gberanda"
-        android:text="Catatan keuangan kosong"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"/>
-
-    <TextView
-        android:id="@+id/tap"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ckk"
-        android:text="Tap tombol + untuk memulai"
-        android:textAlignment="center"/>
-
-    <TextView
-        android:id="@+id/pcttn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tap"
-        android:text="Pencatatan"
-        android:textAlignment="center"/>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnTambah"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_white_24dp"
-        app:backgroundTint="@android:color/black"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_dashboard_buku"
+        app:menu="@menu/activity_dashboard_buku_drawer" />
 
-</RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

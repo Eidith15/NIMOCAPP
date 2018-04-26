@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 5;
-    private String tabTitles[] = new String[]{"PROFILE", "GALLERY", "CONTACT", "CEK MAHASISWA", "SETTING"};
+    private String tabTitles[] = new String[]{"DASHBOARD", "RIWAYAT", "DIVISI"};
 
     public SampleFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -24,16 +24,14 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
-                return ProfileFragment.newInstance(position);
-            case 1:
-                return GalleryFragment.newInstance(position);
-            case 2:
-                return ContactFragment.newInstance(position);
-            case 3:
-                return CekMahasiswaFragment.newInstance(position);
+//            case 0:
+//                return ProfileFragment.newInstance(position);
+//            case 1:
+//                return GalleryFragment.newInstance(position);
+//            case 2:
+//                return ContactFragment.newInstance(position);
             default:
-                return SettingFragment.newInstance(position);
+                return null;
         }
     }
 

@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import com.example.depran.nimoc.R;
 
+import com.example.depran.nimoc.buku.BerandaActivity;
 import com.example.depran.nimoc.buku.DashboardBukuActivity;
 import com.example.depran.nimoc.user.LoginActivity;
 
@@ -42,7 +43,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                         try {
                             String id = preferences.getString("username", null);
                             Log.e("username", id);
-                            intent = new Intent(SplashScreenActivity.this, DashboardBukuActivity.class);
+                            intent = new Intent(SplashScreenActivity.this, BerandaActivity.class);
                         } catch (Exception e) {
                             intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                         }

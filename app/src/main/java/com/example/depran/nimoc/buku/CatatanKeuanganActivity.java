@@ -10,6 +10,6 @@ public class CatatanKeuanganActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catatan_keuangan);
+        setContentView(R.layout.list_catatan_keuangan);
     }
 }

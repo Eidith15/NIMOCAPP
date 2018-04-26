@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.depran.nimoc">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,16 +21,15 @@
         </activity>
         <activity
             android:name=".opening.FirstSliderActivity"
-            android:theme="@style/AwalTheme">
-        </activity>
-        <activity android:name=".user.LoginActivity"
-            android:theme="@style/LoginTheme">
-        </activity>
+            android:theme="@style/AwalTheme"></activity>
+        <activity
+            android:name=".user.LoginActivity"
+            android:theme="@style/LoginTheme"></activity>
 
         <activity
             android:name=".buku.DashboardBukuActivity"
             android:label="@string/title_activity_dashboard_buku"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".buku.TambahPemasukanActivity" />
         <activity android:name=".buku.TambahPengeluaranActivity" />
         <activity android:name=".divisi.TambahDivisiActivity" />
@@ -39,9 +38,13 @@
         <activity android:name=".etc.ProfileActivity"></activity>
         <activity android:name=".buku.BerandaActivity" />
         <activity android:name=".buku.CatatanKeuanganActivity"></activity>
-        <activity android:name=".buku.TambahBukuKeuanganActivity" />
+        <activity
+            android:name=".buku.TambahBukuKeuanganActivity"
+            android:parentActivityName=".buku.BerandaActivity"
+            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar" />
         <activity android:name=".buku.EditBukuKeuanganActivity" />
         <activity android:name=".arsip.ArsipActivity" />
         <activity android:name=".arsip.CatatanArsipActivity" />
+        <activity android:name=".etc.BantuanActivity" />
     </application>
 </manifest>

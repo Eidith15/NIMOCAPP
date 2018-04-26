@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:minHeight="@dimen/list_item_height"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/text_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="7"
+        android:orientation="vertical"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:id="@+id/divisi_riwayat"
+            tools:text="Divisi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nominal_riwayat"
+            tools:text="Nominal Pemasukkan atau Pengeluaran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/hariRiwayat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="3"
+        android:paddingLeft="18dp"
+        tools:text="Hari ini"
+        android:textAlignment="viewEnd"
+        android:textSize="20sp"
+        android:paddingRight="16dp"
+        android:textStyle="bold"
+        tools:ignore="RtlCompat" />
+</LinearLayout>

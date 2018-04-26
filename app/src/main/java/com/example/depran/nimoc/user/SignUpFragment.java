@@ -66,7 +66,7 @@ public class SignUpFragment extends Fragment {
         return view;
     }
 
-    //berfungsi untuk login ke database
+    //berfungsi untuk signup / daftar akun ke database
     private class SignUpAyncTask extends AsyncTask<String, String, String> {
 
         ProgressDialog progressDialog;
