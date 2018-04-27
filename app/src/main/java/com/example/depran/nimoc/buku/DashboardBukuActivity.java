@@ -3,12 +3,11 @@ package com.example.depran.nimoc.buku;
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,34 +16,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.astuetz.PagerSlidingTabStrip;
 import com.example.depran.nimoc.DashboardBukuFragment;
 import com.example.depran.nimoc.R;
 import com.example.depran.nimoc.RiwayatFragment;
-import com.example.depran.nimoc.arsip.ArsipActivity;
+import com.example.depran.nimoc.arsip.ArsipFragment;
 import com.example.depran.nimoc.etc.BantuanActivity;
-import com.example.depran.nimoc.etc.BantuanDetailActivity;
 import com.example.depran.nimoc.etc.ProfileActivity;
-import com.example.depran.nimoc.function.SampleFragmentPagerAdapter;
 import com.example.depran.nimoc.user.LoginActivity;
-import com.example.depran.nimoc.user.SignInFragment;
 import com.example.depran.nimoc.utils.Session;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.util.ArrayList;
 
 public class DashboardBukuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Button dashboardBukuBtn, riwayatBtn, divisiBtn;
+    TextView namaUser, emailUser;
+    ImageView imageUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +62,16 @@ public class DashboardBukuActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+
+        namaUser = (TextView) headerView.findViewById(R.id.nama_user);
+        emailUser = (TextView) headerView.findViewById(R.id.email_user);
+        imageUser= (ImageView) headerView.findViewById(R.id.image_user);
+        SharedPreferences preferences = DashboardBukuActivity.this
+                .getSharedPreferences(Session.PREF_NAME, 0);
+        String username = preferences.getString("username", null);
+        namaUser.setText(username);
 
         changeContent(DashboardBukuFragment.newInstance(this));
         dashboardBukuBtn = (Button) findViewById(R.id.dashboard_buku_btn);
@@ -149,7 +151,7 @@ public class DashboardBukuActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             finish();
         } else if (id == R.id.nav_archive) {
-            startActivity(new Intent(DashboardBukuActivity.this, ArsipActivity.class));
+//            startActivity(new Intent(DashboardBukuActivity.this, ArsipFragment.class));
         } else if (id == R.id.nav_setting) {
             startActivity(new Intent(DashboardBukuActivity.this, ProfileActivity.class));
         } else if (id == R.id.nav_help) {

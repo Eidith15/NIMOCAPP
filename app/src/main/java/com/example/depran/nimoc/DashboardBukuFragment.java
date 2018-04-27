@@ -53,7 +53,7 @@ public class DashboardBukuFragment extends Fragment {
         yValues.add(new PieEntry(34f, "PartyB"));
 
         PieDataSet dataSet = new PieDataSet(yValues, "Tes");
-        dataSet.setSliceSpace(3f);
+        dataSet.setSliceSpace(2f);
         dataSet.setSelectionShift(5f);
         dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
 

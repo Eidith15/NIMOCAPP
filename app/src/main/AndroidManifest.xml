@@ -3,6 +3,7 @@
     package="com.example.depran.nimoc">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,19 +14,18 @@
         <activity
             android:name=".opening.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".opening.FirstSliderActivity"
-            android:theme="@style/AwalTheme"></activity>
+            android:theme="@style/AwalTheme" />
         <activity
             android:name=".user.LoginActivity"
-            android:theme="@style/LoginTheme"></activity>
-
+            android:theme="@style/LoginTheme" />
         <activity
             android:name=".buku.DashboardBukuActivity"
             android:label="@string/title_activity_dashboard_buku"
@@ -33,18 +33,29 @@
         <activity android:name=".buku.TambahPemasukanActivity" />
         <activity android:name=".buku.TambahPengeluaranActivity" />
         <activity android:name=".divisi.TambahDivisiActivity" />
-        <activity android:name=".etc.BantuanDetailActivity" />
         <activity android:name=".divisi.EditDivisiActivity" />
-        <activity android:name=".etc.ProfileActivity"></activity>
+        <activity android:name=".etc.ProfileActivity" />
         <activity android:name=".buku.BerandaActivity" />
-        <activity android:name=".buku.CatatanKeuanganActivity"></activity>
+        <activity android:name=".buku.CatatanKeuanganActivity" />
         <activity
             android:name=".buku.TambahBukuKeuanganActivity"
             android:parentActivityName=".buku.BerandaActivity"
-            android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar" />
-        <activity android:name=".buku.EditBukuKeuanganActivity" />
-        <activity android:name=".arsip.ArsipActivity" />
-        <activity android:name=".arsip.CatatanArsipActivity" />
-        <activity android:name=".etc.BantuanActivity" />
+            android:theme="@style/AppThemeA" />
+        <activity
+            android:name=".buku.EditBukuKeuanganActivity"
+            android:parentActivityName=".buku.BerandaActivity"
+            android:theme="@style/AppThemeA" />
+        <activity
+            android:name=".etc.BantuanActivity"
+            android:parentActivityName=".buku.BerandaActivity"
+            android:theme="@style/AppThemeA" />
+        <activity
+            android:name=".etc.BantuanDetailActivity"
+            android:parentActivityName=".etc.BantuanActivity"
+            android:theme="@style/AppThemeA" />
+        <activity android:name=".etc.AboutActivity"
+            android:parentActivityName=".buku.BerandaActivity"
+            android:theme="@style/AppThemeA"/>
     </application>
+
 </manifest>

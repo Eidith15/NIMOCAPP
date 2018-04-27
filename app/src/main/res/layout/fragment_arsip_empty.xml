@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".arsip.ArsipActivity">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <ImageView
         android:id="@+id/imgArsipKososng"
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="51dp"
         android:src="@drawable/archive" />
 
     <TextView
@@ -35,4 +33,4 @@
         android:text="Arsipkan Buku keuangan anda"
         android:textAlignment="center"/>
 
-</RelativeLayout>
+</LinearLayout>
