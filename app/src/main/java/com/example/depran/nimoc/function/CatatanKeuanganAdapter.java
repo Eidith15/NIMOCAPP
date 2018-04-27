@@ -1,17 +1,13 @@
 package com.example.depran.nimoc.function;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.depran.nimoc.R;
-import com.example.depran.nimoc.buku.DashboardBukuActivity;
 
 import java.util.ArrayList;
 
@@ -34,7 +30,7 @@ public class CatatanKeuanganAdapter extends ArrayAdapter<CatatanKeuangan> {
         TextView namaBukuTextView = (TextView) listItemView.findViewById(R.id.nama_buku);
         namaBukuTextView.setText(currentKeuangan.getmNamaBuku());
 
-        final TextView idBukuTextView = (TextView) listItemView.findViewById(R.id.id_buku);
+        final TextView idBukuTextView = (TextView) listItemView.findViewById(R.id.id_divisi);
         idBukuTextView.setText(currentKeuangan.getmIdBuku());
         return listItemView;
     }

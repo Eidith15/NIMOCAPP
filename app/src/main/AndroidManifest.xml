@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_nimoc_black"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -29,33 +29,70 @@
         <activity
             android:name=".buku.DashboardBukuActivity"
             android:label="@string/title_activity_dashboard_buku"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".buku.TambahPemasukanActivity" />
-        <activity android:name=".buku.TambahPengeluaranActivity" />
-        <activity android:name=".divisi.TambahDivisiActivity" />
-        <activity android:name=".divisi.EditDivisiActivity" />
-        <activity android:name=".etc.ProfileActivity" />
+            android:parentActivityName=".buku.BerandaActivity"
+            android:theme="@style/AppThemeA" />
+        <activity
+            android:name=".buku.TambahPemasukanActivity"
+            android:label="Tambah Pemasukkan"
+            android:parentActivityName=".buku.DashboardBukuActivity"
+            android:theme="@style/AppThemeA" />
+        <activity
+            android:name=".buku.TambahPengeluaranActivity"
+            android:label="Tambah Pengeluaran"
+            android:parentActivityName=".buku.DashboardBukuActivity"
+            android:theme="@style/AppThemeA" />
+        <activity
+            android:name=".divisi.TambahDivisiActivity"
+            android:label="Tambah Divisi"
+            android:parentActivityName=".buku.DashboardBukuActivity"
+            android:theme="@style/AppThemeA" />
+        <activity
+            android:name=".divisi.EditDivisiActivity"
+            android:label="Edit Divisi"
+            android:parentActivityName=".buku.DashboardBukuActivity"
+            android:theme="@style/AppThemeA" />
+        <activity android:name=".etc.ProfileActivity"
+            android:label="Profile"
+            android:parentActivityName=".buku.BerandaActivity"
+            android:theme="@style/AppThemeA"/>
         <activity android:name=".buku.BerandaActivity" />
         <activity android:name=".buku.CatatanKeuanganActivity" />
         <activity
             android:name=".buku.TambahBukuKeuanganActivity"
+            android:label="Tambah Buku"
             android:parentActivityName=".buku.BerandaActivity"
             android:theme="@style/AppThemeA" />
         <activity
             android:name=".buku.EditBukuKeuanganActivity"
+            android:label="Edit Buku"
             android:parentActivityName=".buku.BerandaActivity"
             android:theme="@style/AppThemeA" />
         <activity
             android:name=".etc.BantuanActivity"
+            android:label="Bantuan"
             android:parentActivityName=".buku.BerandaActivity"
             android:theme="@style/AppThemeA" />
         <activity
+            android:name=".user.EditPasswordActivity"
+            android:label="Edit Password"
+            android:parentActivityName=".etc.ProfileActivity"
+            android:theme="@style/AppThemeA" />
+        <activity
+            android:name=".user.EditProfileActivity"
+            android:label="Edit Profile"
+            android:parentActivityName=".etc.ProfileActivity"
+            android:theme="@style/AppThemeA" />
+        <activity
             android:name=".etc.BantuanDetailActivity"
+            android:label="Bantuan Detail"
             android:parentActivityName=".etc.BantuanActivity"
             android:theme="@style/AppThemeA" />
-        <activity android:name=".etc.AboutActivity"
+        <activity
+            android:name=".etc.AboutActivity"
+            android:label="About"
             android:parentActivityName=".buku.BerandaActivity"
-            android:theme="@style/AppThemeA"/>
+            android:theme="@style/AppThemeA" />
+        <activity android:name=".divisi.DivisiActivity"></activity>
     </application>
 
 </manifest>

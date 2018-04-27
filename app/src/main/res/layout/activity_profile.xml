@@ -24,29 +24,37 @@
             android:layout_weight="1.5"
             android:layout_width="match_parent"
             android:layout_height="0dp">
-            <EditText
-                android:hint="Username"
+            <TextView
+                android:text="Username"
+                android:minHeight="32dp"
+                android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_account_box_black_24dp"
                 android:drawablePadding="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:hint="No Telepon"
+            <TextView
+                android:text="No Telpon"
+                android:minHeight="32dp"
+                android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_call_black_24dp"
                 android:drawablePadding="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:hint="Email"
+            <TextView
+                android:text="Email"
+                android:minHeight="32dp"
+                android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_computer_black_24dp"
                 android:drawablePadding="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:hint="Jenis Kelamin"
+            <TextView
+                android:text="Jenis Kelamin"
+                android:minHeight="32dp"
+                android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_people_black_24dp"
                 android:drawablePadding="20dp"
                 android:layout_marginBottom="20dp"
@@ -59,14 +67,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnCancel"
+            android:id="@+id/edit_profile_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="50"
             android:text="Edit Profile" />
 
         <Button
-            android:id="@+id/btnTambah"
+            android:id="@+id/edit_password_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="50"
@@ -78,6 +86,7 @@
         android:text="Hapus Akun"
         android:textSize="14sp"/>
     <Button
+        android:id="@+id/delete_akun_btn"
         android:background="@color/colorAccent"
         android:textColor="@android:color/white"
         android:layout_width="match_parent"

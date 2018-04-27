@@ -66,7 +66,7 @@ public class BantuanActivity extends AppCompatActivity {
                         break;
                     case 3:
                         i= new Intent(BantuanActivity.this, BantuanDetailActivity.class);
-                        i.putExtra("label","Riwayat");
+                        i.putExtra("label","Divisi");
                         i.putExtra("deskripsi","Divisi merupakan media untuk mendaftarkan setiap kelompok pada organisasi yaitu divisi");
                         i.putExtra("fungsi","Divisi berfungsi untuk membedakan setiap laporan atau catatan dari setiap divisi yang ada");
                         i.putExtra("cara_pakai","Pada menu dashboard terdapat list menu divisi, dan ada beberapa list divisi untuk menambahkan divisi yang akan didaftarkan dengan cara klik icon plus berwana hijau maka akan masuk pada menu  edit divisi yang didalamnya terdapat form isi nama divisi");
@@ -74,7 +74,7 @@ public class BantuanActivity extends AppCompatActivity {
                         break;
                     case 4:
                         i= new Intent(BantuanActivity.this, BantuanDetailActivity.class);
-                        i.putExtra("label","Divisi");
+                        i.putExtra("label","Riwayat");
                         i.putExtra("deskripsi","Riwayat merupakan laporan dari pemasukkan dan pengeluaran yang sudah dilakukan oleh setiap divisi. List laporan yang berwarna merah merupakan pengeluaran dan list laporan berwarna hijau merupakan pemasukkan");
                         i.putExtra("fungsi","Riwayat merupakan laporan dari pemasukkan dan pengeluaran yang sudah dilakukan oleh setiap divisi. List laporan yang berwarna merah merupakan pengeluaran dan list laporan berwarna hijau merupakan pemasukkan");
                         i.putExtra("cara_pakai","Ketika mengisi pada menu pemasukkan dan pengeluaran maka laporan tersebut akan masuk listnya pada riwayat");

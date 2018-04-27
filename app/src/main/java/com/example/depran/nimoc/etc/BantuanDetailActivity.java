@@ -17,6 +17,7 @@ public class BantuanDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String label = intent.getStringExtra("label");
+        setTitle(label);
         String deskripsi = intent.getStringExtra("deskripsi");
         String fungsi = intent.getStringExtra("fungsi");
         String caraPakai = intent.getStringExtra("cara_pakai");

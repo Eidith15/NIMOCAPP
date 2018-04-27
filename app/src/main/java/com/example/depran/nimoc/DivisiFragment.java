@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +28,8 @@ import com.example.depran.nimoc.buku.EditBukuKeuanganActivity;
 import com.example.depran.nimoc.buku.TambahBukuKeuanganActivity;
 import com.example.depran.nimoc.function.CatatanKeuangan;
 import com.example.depran.nimoc.function.CatatanKeuanganAdapter;
+import com.example.depran.nimoc.function.Divisi;
+import com.example.depran.nimoc.function.DivisiAdapter;
 import com.example.depran.nimoc.utils.Session;
 
 import org.json.JSONArray;
@@ -40,32 +42,30 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CatatanKeuanganFragment extends Fragment {
-    public static BerandaActivity berandaActivity;
+public class DivisiFragment extends Fragment {
+    public static DashboardBukuActivity dashboardBA;
     SwipeMenuListView listView;
-    private static ArrayList<CatatanKeuangan> catatanKeuangans;
+    private static ArrayList<Divisi> divisiArrayList;
 
-    public static CatatanKeuanganFragment newInstance(BerandaActivity activity, JSONArray jsonArray) {
-        berandaActivity = activity;
-        catatanKeuangans = new ArrayList<CatatanKeuangan>();
+    public static DivisiFragment newInstance(DashboardBukuActivity activity, JSONArray jsonArray) {
+        dashboardBA = activity;
+        divisiArrayList = new ArrayList<Divisi>();
         try {
-            setCatatanKeuangan(jsonArray);
+            setDivisi(jsonArray);
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e("json e : ", e.getMessage().toString());
         }
-        return new CatatanKeuanganFragment();
+        return new DivisiFragment();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = LayoutInflater.from(berandaActivity).inflate(R.layout.fragment_catatan_keuangan, container, false);
+        View view = LayoutInflater.from(dashboardBA).inflate(R.layout.fragment_catatan_keuangan, container, false);
 
 
-        CatatanKeuanganAdapter adapter = new CatatanKeuanganAdapter(getActivity(), catatanKeuangans);
+        DivisiAdapter adapter = new DivisiAdapter(getActivity(), divisiArrayList);
         listView = (SwipeMenuListView) view.findViewById(R.id.lsView);
         listView.setAdapter(adapter);
 
@@ -113,12 +113,12 @@ public class CatatanKeuanganFragment extends Fragment {
 
                 switch (index) {
                     case 0:
-                        Log.d("click","edit");
+                        Log.d("click", "edit");
                         Intent intent = new Intent(getActivity(), EditBukuKeuanganActivity.class);
                         getActivity().startActivity(intent);
                         break;
                     case 1:
-                        Log.d("click","delete");
+                        Log.d("click", "delete");
                         konfirmasiHapus();
                         break;
                 }
@@ -133,36 +133,21 @@ public class CatatanKeuanganFragment extends Fragment {
                 // selected item
                 String selected = ((TextView) view.findViewById(R.id.id_divisi)).getText().toString();
 
-                Session.createBukuSession(getActivity(), selected);
-                ImageView arsipBtn = (ImageView) view.findViewById(R.id.arsip_btn);
-                arsipBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(getActivity(), "btn click", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                Intent intent = new Intent(getActivity(), DashboardBukuActivity.class);
+                Session.createDivisiSession(getActivity(), selected);
 
                 Toast toast = Toast.makeText(getActivity(), selected, Toast.LENGTH_SHORT);
                 toast.show();
-                startActivity(intent);
-            }
-        });
-
-        view.findViewById(R.id.btnTambah).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TambahBukuKeuanganActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), DashboardBukuActivity.class);
+//                startActivity(intent);
             }
         });
         return view;
     }
 
-    private void konfirmasiHapus(){
+    private void konfirmasiHapus() {
         new MaterialDialog.Builder(getActivity())
                 .title(R.string.title_logout)
-                .content(R.string.content_hapus_buku)
+                .content(R.string.content_hapus_divisi)
                 .positiveText(R.string.agree)
                 .negativeText(R.string.disagree)
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
@@ -174,67 +159,14 @@ public class CatatanKeuanganFragment extends Fragment {
                 .show();
     }
 
-    public static void setCatatanKeuangan(JSONArray jsonArray) throws JSONException {
+    public static void setDivisi(JSONArray jsonArray) throws JSONException {
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject object = jsonArray.getJSONObject(i);
-            String idBuku = object.getString("id_buku");
-            String idUser = object.getString("f_id_r");
-            String namaBuku = object.getString("nama_buku");
-            String keterangan = object.getString("keterangan");
-            String statusSimpan = object.getString("status_simpan");
-            catatanKeuangans.add(new CatatanKeuangan(new String[]{idBuku, idUser, namaBuku, keterangan, statusSimpan}));
+            String idDivisi = object.getString("id_divisi");
+            String idBuku = object.getString("f_id_ck");
+            String namaDivisi = object.getString("nama_divisi");
+            divisiArrayList.add(new Divisi(idDivisi, idBuku, namaDivisi));
         }
     }
-
-    //berfungsi untuk mengambil data buku ke database
-//    private class BukuAsyncTask extends AsyncTask<String, String, String> {
-//
-//        ProgressDialog progressDialog;
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            progressDialog = new ProgressDialog(BerandaActivity.this);
-//            progressDialog.setMessage("Loading...");
-//            progressDialog.setCancelable(false);
-//            progressDialog.show();
-//        }
-//
-//        @Override
-//        protected String doInBackground(String... params) {
-//            String respon = "";
-//            try {
-//                SharedPreferences preferences = BerandaActivity.this
-//                        .getSharedPreferences(Session.PREF_NAME, 0);
-//                String id = preferences.getString("id_u", null);
-//                String url = Constrants.URL_GET_BUKU+"&f_id_r="+id;
-//                respon = CustomHttpClient.executeHttpGet(url);
-//
-//            } catch (Exception e) {
-//                respon = e.toString();
-//            }
-//            return respon;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//            super.onPostExecute(result);
-//            progressDialog.dismiss();
-//            Log.e("Respon"," -> "+result) ;
-//            try {
-//                JSONArray jsonArray = new JSONArray(result);
-//                if (jsonArray.length()>0){
-//                    changeContent(CatatanKeuanganFragment.newInstance(BerandaActivity.this,jsonArray));
-//                }else{
-//                    changeContent(BerandaFragment.newInstance(BerandaActivity.this));
-//                }
-//
-//            } catch (Exception e) {
-//                Toast.makeText(BerandaActivity.this, result.toString(), Toast.LENGTH_LONG).show();
-//                Log.e("masuk","-> "+e.getMessage()) ;
-//            }
-//        }
-//    }
-
 }

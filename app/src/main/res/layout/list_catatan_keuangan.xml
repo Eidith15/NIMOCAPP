@@ -23,7 +23,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/id_buku"
+                    android:id="@+id/id_divisi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""

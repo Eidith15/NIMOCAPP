@@ -31,6 +31,13 @@ public class Session {
         editor.commit();
     }
 
+    public static void createDivisiSession(Context context, String... params) {
+        pref = context.getSharedPreferences(PREF_NAME, 0);
+        editor = pref.edit();
+        editor.putString("id_divisi", params[0]);
+        editor.commit();
+    }
+
     public static void createAwalSession(Context context, boolean b) {
         prefIntro = context.getSharedPreferences(PREF_NAME_INTRO, 0);
         editorIntro = prefIntro.edit();

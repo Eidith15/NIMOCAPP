@@ -11,22 +11,56 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/piechart"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="70">
+            android:layout_weight="75">
 
-        </com.github.mikephil.charting.charts.PieChart>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="350dp">
+
+                </com.github.mikephil.charting.charts.PieChart>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Total Pemasukkan"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rp.1000.000,00"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Total Pengeluaran"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rp.200.000,00"/>
+            </LinearLayout>
+
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="30"
+            android:layout_weight="25"
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/button_topleft"
+                android:id="@+id/pengeluaran_btn"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -43,7 +77,7 @@
                 android:src="@drawable/ic_remove_circle_black_24dp" />
 
             <ImageButton
-                android:id="@+id/button_topRight"
+                android:id="@+id/pemasukkan_btn"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

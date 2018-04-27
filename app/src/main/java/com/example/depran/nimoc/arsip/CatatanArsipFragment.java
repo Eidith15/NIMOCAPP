@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,8 +16,6 @@ import com.example.depran.nimoc.R;
 import com.example.depran.nimoc.buku.BerandaActivity;
 import com.example.depran.nimoc.function.CatatanArsipAdapter;
 import com.example.depran.nimoc.function.CatatanKeuangan;
-import com.example.depran.nimoc.function.CatatanKeuanganAdapter;
-import com.example.depran.nimoc.utils.Session;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,7 +57,7 @@ public class CatatanArsipFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 // selected item
-                String selected = ((TextView) view.findViewById(R.id.id_buku)).getText().toString();
+                String selected = ((TextView) view.findViewById(R.id.id_divisi)).getText().toString();
 
                 ImageView unArsipBtn = (ImageView) view.findViewById(R.id.unarsip_btn);
                 unArsipBtn.setOnClickListener(new View.OnClickListener() {
