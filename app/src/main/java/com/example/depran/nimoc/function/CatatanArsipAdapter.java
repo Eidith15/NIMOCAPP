@@ -30,7 +30,7 @@ public class CatatanArsipAdapter extends ArrayAdapter<CatatanKeuangan> {
         TextView namaBukuTextView = (TextView) listItemView.findViewById(R.id.nama_buku);
         namaBukuTextView.setText(currentKeuangan.getmNamaBuku());
 
-        final TextView idBukuTextView = (TextView) listItemView.findViewById(R.id.id_divisi);
+        final TextView idBukuTextView = (TextView) listItemView.findViewById(R.id.id_buku);
         idBukuTextView.setText(currentKeuangan.getmIdBuku());
         return listItemView;
     }

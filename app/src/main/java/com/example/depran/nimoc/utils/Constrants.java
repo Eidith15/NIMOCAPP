@@ -6,10 +6,10 @@ package com.example.depran.nimoc.utils;
 
 public class Constrants {
     //hosting public
-//    public static String URL = "https://adepranaya.000webhostapp.com/";
+    public static String URL = "https://adepranaya.000webhostapp.com/";
 
     //hosting local
-    public static String URL = "http://192.168.10.30/api_nimoc/";
+//    public static String URL = "http://192.168.10.30/api_nimoc/";
 
     //register / sign up / daftar
     public static final String URL_ADD_USER = URL + "user_apps";

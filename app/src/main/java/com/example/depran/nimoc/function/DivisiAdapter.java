@@ -26,7 +26,7 @@ public class DivisiAdapter extends ArrayAdapter<Divisi> {
 
         Divisi currentDivisi = getItem(position);
 
-        TextView idTextView = (TextView) listItemView.findViewById(R.id.id_divisi);
+        TextView idTextView = (TextView) listItemView.findViewById(R.id.id_buku);
         idTextView.setText(currentDivisi.getIdDivisi());
 
         TextView divisiTextView = (TextView) listItemView.findViewById(R.id.nama_divisi);

@@ -27,7 +27,7 @@ public class CatatanKeuangan {
         return mNamaBuku;
     }
 
-    public String getnKeterangan() {
+    public String getmKeterangan() {
         return nKeterangan;
     }
 

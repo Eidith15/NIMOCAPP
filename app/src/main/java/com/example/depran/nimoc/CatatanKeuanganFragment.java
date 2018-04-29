@@ -2,6 +2,7 @@ package com.example.depran.nimoc;
 
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class CatatanKeuanganFragment extends Fragment {
     public static BerandaActivity berandaActivity;
     SwipeMenuListView listView;
     private static ArrayList<CatatanKeuangan> catatanKeuangans;
+    private Object mAppList;
 
     public static CatatanKeuanganFragment newInstance(BerandaActivity activity, JSONArray jsonArray) {
         berandaActivity = activity;
@@ -63,7 +65,7 @@ public class CatatanKeuanganFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = LayoutInflater.from(berandaActivity).inflate(R.layout.fragment_catatan_keuangan, container, false);
-
+        mAppList = getActivity().getPackageManager().getInstalledApplications(0);
 
         CatatanKeuanganAdapter adapter = new CatatanKeuanganAdapter(getActivity(), catatanKeuangans);
         listView = (SwipeMenuListView) view.findViewById(R.id.lsView);
@@ -110,12 +112,24 @@ public class CatatanKeuanganFragment extends Fragment {
         listView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-
+                    Log.e("get view",getView().toString());
                 switch (index) {
                     case 0:
                         Log.d("click","edit");
+                        Log.d("position",position+"");
                         Intent intent = new Intent(getActivity(), EditBukuKeuanganActivity.class);
-                        getActivity().startActivity(intent);
+
+                        String nama_buku_d = ((TextView) listView.getChildAt(position).findViewById(R.id.nama_buku)).getText().toString().trim();
+                        Log.d("nama_buku_d", nama_buku_d);
+                        Log.d("item ke",listView.getItemAtPosition(position).toString()+"");
+                        String idBuku = ((TextView) listView.getChildAt(position).findViewById(R.id.id_buku)).getText().toString().trim();
+
+                        String namaBuku = ((TextView) listView.getChildAt(position).findViewById(R.id.nama_buku)).getText().toString().trim();
+                        String ketBuku = ((TextView) listView.getChildAt(position).findViewById(R.id.ket_buku)).getText().toString().trim();
+                        intent.putExtra("id_buku", idBuku);
+                        intent.putExtra("nama_buku", namaBuku);
+                        intent.putExtra("ket_buku", ketBuku);
+                        getActivity().startActivityForResult(intent, 1);
                         break;
                     case 1:
                         Log.d("click","delete");
@@ -124,6 +138,7 @@ public class CatatanKeuanganFragment extends Fragment {
                 }
                 // false : close the menu; true : not close the menu
                 return false;
+
             }
         });
         listView.setOnItemClickListener(new ListView.OnItemClickListener() {
@@ -131,7 +146,7 @@ public class CatatanKeuanganFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 // selected item
-                String selected = ((TextView) view.findViewById(R.id.id_divisi)).getText().toString();
+                String selected = ((TextView) view.findViewById(R.id.id_buku)).getText().toString();
 
                 Session.createBukuSession(getActivity(), selected);
                 ImageView arsipBtn = (ImageView) view.findViewById(R.id.arsip_btn);

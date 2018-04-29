@@ -7,6 +7,12 @@
     tools:context=".buku.EditBukuKeuanganActivity">
 
     <TextView
+        android:id="@+id/id_buku"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="idbuku"
+        android:visibility="invisible"/>
+    <TextView
         android:id="@+id/eBuku"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

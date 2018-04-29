@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     tools:context=".DashboardBukuFragment">
 
@@ -29,26 +30,64 @@
 
                 </com.github.mikephil.charting.charts.PieChart>
 
-                <TextView
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="Total Pemasukkan"/>
-                <TextView
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    card_view:cardCornerRadius="8dp"
+                    card_view:cardElevation="4dp"
+                    card_view:contentPadding="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Total Pemasukkan"
+                            android:textSize="18sp"
+                            android:paddingBottom="4dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rp.1000.000,00"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rp.1000.000,00"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="Total Pengeluaran"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Rp.200.000,00"/>
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    card_view:cardCornerRadius="8dp"
+                    card_view:cardElevation="4dp"
+                    card_view:contentPadding="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Total Pengeluaran"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rp.200.000,00"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
             </LinearLayout>
 
         </ScrollView>

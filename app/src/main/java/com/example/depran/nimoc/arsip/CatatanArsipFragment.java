@@ -57,7 +57,7 @@ public class CatatanArsipFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 // selected item
-                String selected = ((TextView) view.findViewById(R.id.id_divisi)).getText().toString();
+                String selected = ((TextView) view.findViewById(R.id.id_buku)).getText().toString();
 
                 ImageView unArsipBtn = (ImageView) view.findViewById(R.id.unarsip_btn);
                 unArsipBtn.setOnClickListener(new View.OnClickListener() {

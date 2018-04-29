@@ -23,7 +23,15 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/id_divisi"
+                    android:id="@+id/id_buku"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@android:color/black"
+                    android:textSize="1sp"
+                    android:visibility="invisible"/>
+                <TextView
+                    android:id="@+id/ket_buku"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""

@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,12 +21,8 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
-import com.example.depran.nimoc.buku.BerandaActivity;
 import com.example.depran.nimoc.buku.DashboardBukuActivity;
 import com.example.depran.nimoc.buku.EditBukuKeuanganActivity;
-import com.example.depran.nimoc.buku.TambahBukuKeuanganActivity;
-import com.example.depran.nimoc.function.CatatanKeuangan;
-import com.example.depran.nimoc.function.CatatanKeuanganAdapter;
 import com.example.depran.nimoc.function.Divisi;
 import com.example.depran.nimoc.function.DivisiAdapter;
 import com.example.depran.nimoc.utils.Session;
@@ -131,7 +126,7 @@ public class DivisiFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 // selected item
-                String selected = ((TextView) view.findViewById(R.id.id_divisi)).getText().toString();
+                String selected = ((TextView) view.findViewById(R.id.id_buku)).getText().toString();
 
                 Session.createDivisiSession(getActivity(), selected);
 

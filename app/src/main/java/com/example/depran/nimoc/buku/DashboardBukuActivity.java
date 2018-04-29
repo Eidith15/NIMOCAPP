@@ -11,6 +11,9 @@ import com.example.depran.nimoc.DivisiEmptyFragment;
 import com.example.depran.nimoc.R;
 import com.example.depran.nimoc.RiwayatFragment;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class DashboardBukuActivity extends AppCompatActivity {
 
     Button dashboardBukuBtn, riwayatBtn, divisiBtn;
@@ -55,5 +58,11 @@ public class DashboardBukuActivity extends AppCompatActivity {
 //        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 //        fragmentTransaction.replace(R.id.frameLayoutBuku, fragment);
 //        fragmentTransaction.commit();
+    }
+
+    public String ubahKeRupiah(int nominal){
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        return formatRupiah.format((double)nominal);
     }
 }
