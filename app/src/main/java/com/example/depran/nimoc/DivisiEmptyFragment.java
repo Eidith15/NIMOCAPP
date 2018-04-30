@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.depran.nimoc.buku.DashboardBukuActivity;
-
+import com.example.depran.nimoc.divisi.TambahDivisiActivity;
 
 
 public class DivisiEmptyFragment extends Fragment {
@@ -28,8 +28,8 @@ public class DivisiEmptyFragment extends Fragment {
         view.findViewById(R.id.btnTambah).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), TambahBukuKeuanganActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getActivity(), TambahDivisiActivity.class);
+                startActivity(intent);
             }
         });
         return view;

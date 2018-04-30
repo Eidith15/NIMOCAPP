@@ -27,6 +27,9 @@ public class Constrants {
 
     public static final String URL_GET_DIVISI= URL + "divisi";
     public static final String URL_GET_ARSIP= URL + "buku_ctt_keuangan?status_simpan=1";
+    public static final String URL_GET_RIWAYAT= URL + "riwayat";
+    public static final String URL_GET_PP= URL + "riwayat?action=graph_ck";
+    public static final String URL_GET_PP_DVS= URL + "riwayat?action=graph_dvs";
 
 //    public static final String URL_ADD_POSTING = URL + "posting.php?action=add_posting";
 //    public static final String URL_GET_POSTING = URL + "posting.php?action=get_posting";

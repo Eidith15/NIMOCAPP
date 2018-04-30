@@ -26,7 +26,6 @@ import java.util.ArrayList;
 public class TambahBukuKeuanganActivity extends AppCompatActivity {
 
     EditText namaBukuText, keteranganBukuText;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

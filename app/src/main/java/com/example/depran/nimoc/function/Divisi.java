@@ -20,4 +20,8 @@ public class Divisi {
     public String getNamaDivisi() {
         return namaDivisi;
     }
+    @Override
+    public String toString() {
+        return namaDivisi;
+    }
 }

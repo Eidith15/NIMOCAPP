@@ -163,7 +163,7 @@ public class CatatanKeuanganFragment extends Fragment {
 
                 Session.createBukuSession(getActivity(), selected);
                 ImageView arsipBtn = (ImageView) view.findViewById(R.id.arsip_btn);
-                final String idBuku = ((TextView) listView.findViewById(R.id.id_buku)).getText().toString().trim();
+                final String idBuku = ((TextView) listView.getChildAt(i).findViewById(R.id.id_buku)).getText().toString().trim();
                 arsipBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
