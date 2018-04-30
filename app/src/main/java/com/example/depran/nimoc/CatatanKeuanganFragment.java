@@ -156,17 +156,19 @@ public class CatatanKeuanganFragment extends Fragment {
         });
         listView.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
 
                 // selected item
                 String selected = ((TextView) view.findViewById(R.id.id_buku)).getText().toString();
 
                 Session.createBukuSession(getActivity(), selected);
                 ImageView arsipBtn = (ImageView) view.findViewById(R.id.arsip_btn);
+                final String idBuku = ((TextView) listView.findViewById(R.id.id_buku)).getText().toString().trim();
                 arsipBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getActivity(), "btn click", Toast.LENGTH_SHORT).show();
+                        pos = i;
+                        new ArsipBukuAsyncTask().execute(idBuku);
                     }
                 });
                 Intent intent = new Intent(getActivity(), DashboardBukuActivity.class);
@@ -290,6 +292,60 @@ public class CatatanKeuanganFragment extends Fragment {
                     refreshListHapus(pos);
                 } else {
                     Toast.makeText(getActivity(), "Hapus Buku gagal", Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
+                Log.e("masuk", "-> " + e.getMessage());
+            }
+        }
+    }
+
+    //berfungsi untuk menghapus data buku ke database
+    private class ArsipBukuAsyncTask extends AsyncTask<String, String, String> {
+
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("Loading...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String respon = "";
+            try {
+                String url = Constrants.URL_BUKU;
+                ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+                SharedPreferences preferences = getActivity()
+                        .getSharedPreferences(Session.PREF_NAME, 0);
+                postParameters.add(new BasicNameValuePair("action", "update"));
+                postParameters.add(new BasicNameValuePair("id_buku", params[0]));
+                postParameters.add(new BasicNameValuePair("status_simpan", "1"));
+
+                respon = CustomHttpClient.executeHttpPost(url, postParameters);
+
+            } catch (Exception e) {
+                respon = e.toString();
+            }
+            return respon;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            Log.e("Respon", " -> " + result);
+            try {
+                JSONObject object = new JSONObject(result);
+                if (object.getString("status").equalsIgnoreCase("success")) {
+                    Toast.makeText(getActivity(), "Buku anda telah berhasil di arsipkan", Toast.LENGTH_LONG).show();
+                    refreshListHapus(pos);
+                } else {
+                    Toast.makeText(getActivity(), "Arsip Buku gagal", Toast.LENGTH_LONG).show();
                 }
             } catch (Exception e) {
                 Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
