@@ -1,7 +1,9 @@
 package com.example.depran.nimoc.buku;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,7 @@ import com.example.depran.nimoc.utils.CustomHttpClient;
 import com.example.depran.nimoc.utils.Session;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -27,7 +30,7 @@ public class EditBukuKeuanganActivity extends AppCompatActivity {
     Button cancelButton, editButton;
     EditText namaBukuEditText, ketEditText;
     TextView idBukuTextView;
-
+    int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,7 @@ public class EditBukuKeuanganActivity extends AppCompatActivity {
         // Get data sent from calling activity.
         Bundle extras = getIntent().getExtras();
         String idBuku = extras.getString("id_buku");
+        position = extras.getInt("position");
         String namaBuku = extras.getString("nama_buku", "");
         String ketBuku;
         if (extras.getString("ket_buku").isEmpty() || extras.getString("ket_buku").equalsIgnoreCase("null")) {
@@ -66,29 +70,34 @@ public class EditBukuKeuanganActivity extends AppCompatActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String namaBuku = namaBukuEditText.getText().toString().trim();
+                String ketBuku = ketEditText.getText().toString().trim();
+                String idBuku = idBukuTextView.getText().toString().trim();
+
+                new EditBukuAsyncTask().execute(idBuku, namaBuku, ketBuku);
 
             }
         });
 
     }
 
-    /**
-     * Click handler for the Save button.
-     * Creates a new intent for the reply, adds the reply message to it as an extra,
-     * sets the intent result, and closes the activity.
-     *
-     * @param view The view that was clicked.
-     */
-    public void returnReply(View view) {
-//        String word = ((EditText) findViewById(R.id.edit_word)).getText().toString();
-//        String desc= ((EditText) findViewById(R.id.edit_desc)).getText().toString();
-//
-//        Intent replyIntent = new Intent();
-//        replyIntent.putExtra(EXTRA_REPLY, word);
-//        replyIntent.putExtra(EXTRA_REPLY1, desc);
-//        replyIntent.putExtra(WordListAdapter.EXTRA_ID, mId);
-//        setResult(RESULT_OK, replyIntent);
-//        finish();
+
+    public void returnReply() {
+        String namaBuku = namaBukuEditText.getText().toString().trim();
+        String ketBuku = ketEditText.getText().toString().trim();
+        String idBuku = idBukuTextView.getText().toString().trim();
+
+        Intent replyIntent = new Intent();
+        replyIntent.putExtra("com.example.depran.nimoc.position", position);
+        replyIntent.putExtra("com.example.depran.nimoc.nama_buku", namaBuku);
+        replyIntent.putExtra("com.example.depran.nimoc.ket_buku", ketBuku);
+        replyIntent.putExtra("com.example.depran.nimoc.id_buku", idBuku);
+        if (getParent() == null) {
+            setResult(Activity.RESULT_OK, replyIntent);
+        } else {
+            getParent().setResult(Activity.RESULT_OK, replyIntent);
+        }
+        finish();
     }
 
     //berfungsi untuk edit buku ke database
@@ -110,11 +119,16 @@ public class EditBukuKeuanganActivity extends AppCompatActivity {
             String respon = "";
             try {
                 String url = Constrants.URL_BUKU;
-                ArrayList<NameValuePair> putParameters = new ArrayList<NameValuePair>();
-//                putParameters.add(new BasicNameValuePair("username", params[0]));
-//                putParameters.add(new BasicNameValuePair("password", params[1]));
+                ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+                SharedPreferences preferences = EditBukuKeuanganActivity.this
+                        .getSharedPreferences(Session.PREF_NAME, 0);
+                postParameters.add(new BasicNameValuePair("action", "update"));
+                postParameters.add(new BasicNameValuePair("id_buku", params[0]));
+                postParameters.add(new BasicNameValuePair("f_id_r", preferences.getString("id_u", null)));
+                postParameters.add(new BasicNameValuePair("nama_buku", params[1]));
+                postParameters.add(new BasicNameValuePair("keterangan", params[2]));
 
-                respon = CustomHttpClient.executeHttpPut(url, putParameters);
+                respon = CustomHttpClient.executeHttpPost(url, postParameters);
 
             } catch (Exception e) {
                 respon = e.toString();
@@ -130,20 +144,10 @@ public class EditBukuKeuanganActivity extends AppCompatActivity {
             try {
                 JSONObject object = new JSONObject(result);
                 if (object.getString("status").equalsIgnoreCase("success")) {
-
-                    String idUser = object.getJSONObject("data").getString("id_u");
-                    String username = object.getJSONObject("data").getString("username");
-                    String password = object.getJSONObject("data").getString("password");
-
-                    //pengisian data idUser, username, password ke Session...
-                    Session.createLoginSession(EditBukuKeuanganActivity.this, idUser, username, password);
-
-                    //Toast.makeText(Login2Activity.this, "Pindah ke BerandaActivity",Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(EditBukuKeuanganActivity.this, BerandaActivity.class));
-                    EditBukuKeuanganActivity.this.finish();
-
+                    returnReply();
+                    Toast.makeText(EditBukuKeuanganActivity.this, "Buku anda telah berhasil di ubah", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(EditBukuKeuanganActivity.this, "Username atau Password anda salah", Toast.LENGTH_LONG).show();
+                    Toast.makeText(EditBukuKeuanganActivity.this, "Edit Buku gagal", Toast.LENGTH_LONG).show();
                 }
             } catch (Exception e) {
                 Toast.makeText(EditBukuKeuanganActivity.this, result.toString(), Toast.LENGTH_LONG).show();

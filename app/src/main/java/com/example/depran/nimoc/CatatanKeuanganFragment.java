@@ -1,12 +1,16 @@
 package com.example.depran.nimoc;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,13 +33,19 @@ import com.example.depran.nimoc.buku.EditBukuKeuanganActivity;
 import com.example.depran.nimoc.buku.TambahBukuKeuanganActivity;
 import com.example.depran.nimoc.function.CatatanKeuangan;
 import com.example.depran.nimoc.function.CatatanKeuanganAdapter;
+import com.example.depran.nimoc.utils.Constrants;
+import com.example.depran.nimoc.utils.CustomHttpClient;
 import com.example.depran.nimoc.utils.Session;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -46,6 +56,8 @@ public class CatatanKeuanganFragment extends Fragment {
     SwipeMenuListView listView;
     private static ArrayList<CatatanKeuangan> catatanKeuangans;
     private Object mAppList;
+    CatatanKeuanganAdapter adapter;
+    int pos;
 
     public static CatatanKeuanganFragment newInstance(BerandaActivity activity, JSONArray jsonArray) {
         berandaActivity = activity;
@@ -67,7 +79,7 @@ public class CatatanKeuanganFragment extends Fragment {
         View view = LayoutInflater.from(berandaActivity).inflate(R.layout.fragment_catatan_keuangan, container, false);
         mAppList = getActivity().getPackageManager().getInstalledApplications(0);
 
-        CatatanKeuanganAdapter adapter = new CatatanKeuanganAdapter(getActivity(), catatanKeuangans);
+        adapter = new CatatanKeuanganAdapter(getActivity(), catatanKeuangans);
         listView = (SwipeMenuListView) view.findViewById(R.id.lsView);
         listView.setAdapter(adapter);
 
@@ -112,28 +124,29 @@ public class CatatanKeuanganFragment extends Fragment {
         listView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-                    Log.e("get view",getView().toString());
+                Log.e("get view", getView().toString());
+                String idBuku = ((TextView) listView.getChildAt(position).findViewById(R.id.id_buku)).getText().toString().trim();
+                String namaBuku = ((TextView) listView.getChildAt(position).findViewById(R.id.nama_buku)).getText().toString().trim();
+                String ketBuku = ((TextView) listView.getChildAt(position).findViewById(R.id.ket_buku)).getText().toString().trim();
                 switch (index) {
                     case 0:
-                        Log.d("click","edit");
-                        Log.d("position",position+"");
+                        Log.d("click", "edit");
+                        Log.d("position", position + "");
                         Intent intent = new Intent(getActivity(), EditBukuKeuanganActivity.class);
 
                         String nama_buku_d = ((TextView) listView.getChildAt(position).findViewById(R.id.nama_buku)).getText().toString().trim();
                         Log.d("nama_buku_d", nama_buku_d);
-                        Log.d("item ke",listView.getItemAtPosition(position).toString()+"");
-                        String idBuku = ((TextView) listView.getChildAt(position).findViewById(R.id.id_buku)).getText().toString().trim();
-
-                        String namaBuku = ((TextView) listView.getChildAt(position).findViewById(R.id.nama_buku)).getText().toString().trim();
-                        String ketBuku = ((TextView) listView.getChildAt(position).findViewById(R.id.ket_buku)).getText().toString().trim();
+                        Log.d("item ke", listView.getItemAtPosition(position).toString() + "");
+                        intent.putExtra("position", position);
                         intent.putExtra("id_buku", idBuku);
                         intent.putExtra("nama_buku", namaBuku);
                         intent.putExtra("ket_buku", ketBuku);
-                        getActivity().startActivityForResult(intent, 1);
+                        startActivityForResult(intent, 1);
                         break;
                     case 1:
-                        Log.d("click","delete");
-                        konfirmasiHapus();
+                        Log.d("click", "delete");
+                        pos = position;
+                        konfirmasiHapus(idBuku);
                         break;
                 }
                 // false : close the menu; true : not close the menu
@@ -174,7 +187,37 @@ public class CatatanKeuanganFragment extends Fragment {
         return view;
     }
 
-    private void konfirmasiHapus(){
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("balasan", "edit 1");
+
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Log.d("balasan", data.toString());
+
+                String idBuku = data.getStringExtra("com.example.depran.nimoc.id_buku")
+                        ,namaBuku =data.getStringExtra("com.example.depran.nimoc.nama_buku")
+                        ,ketBuku = data.getStringExtra("com.example.depran.nimoc.ket_buku");
+
+                int position = data.getIntExtra("com.example.depran.nimoc.position", -99);
+
+                SharedPreferences preferences = getActivity()
+                        .getSharedPreferences(Session.PREF_NAME, 0);
+                String owner = preferences.getString("id_u", null);
+                catatanKeuangans.set(position, new CatatanKeuangan(new String[]{idBuku, owner, namaBuku, ketBuku, "0"}));
+                adapter.notifyDataSetChanged();
+
+            }
+        }
+    }
+
+    private void refreshListHapus(int i){
+        catatanKeuangans.remove(i);
+        adapter.notifyDataSetChanged();
+    }
+    private void konfirmasiHapus(final String id) {
         new MaterialDialog.Builder(getActivity())
                 .title(R.string.title_logout)
                 .content(R.string.content_hapus_buku)
@@ -183,7 +226,7 @@ public class CatatanKeuanganFragment extends Fragment {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(MaterialDialog dialog, DialogAction which) {
-
+                        new HapusBukuAsyncTask().execute(id);
                     }
                 })
                 .show();
@@ -202,54 +245,56 @@ public class CatatanKeuanganFragment extends Fragment {
         }
     }
 
-    //berfungsi untuk mengambil data buku ke database
-//    private class BukuAsyncTask extends AsyncTask<String, String, String> {
-//
-//        ProgressDialog progressDialog;
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            progressDialog = new ProgressDialog(BerandaActivity.this);
-//            progressDialog.setMessage("Loading...");
-//            progressDialog.setCancelable(false);
-//            progressDialog.show();
-//        }
-//
-//        @Override
-//        protected String doInBackground(String... params) {
-//            String respon = "";
-//            try {
-//                SharedPreferences preferences = BerandaActivity.this
-//                        .getSharedPreferences(Session.PREF_NAME, 0);
-//                String id = preferences.getString("id_u", null);
-//                String url = Constrants.URL_GET_BUKU+"&f_id_r="+id;
-//                respon = CustomHttpClient.executeHttpGet(url);
-//
-//            } catch (Exception e) {
-//                respon = e.toString();
-//            }
-//            return respon;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//            super.onPostExecute(result);
-//            progressDialog.dismiss();
-//            Log.e("Respon"," -> "+result) ;
-//            try {
-//                JSONArray jsonArray = new JSONArray(result);
-//                if (jsonArray.length()>0){
-//                    changeContent(CatatanKeuanganFragment.newInstance(BerandaActivity.this,jsonArray));
-//                }else{
-//                    changeContent(BerandaFragment.newInstance(BerandaActivity.this));
-//                }
-//
-//            } catch (Exception e) {
-//                Toast.makeText(BerandaActivity.this, result.toString(), Toast.LENGTH_LONG).show();
-//                Log.e("masuk","-> "+e.getMessage()) ;
-//            }
-//        }
-//    }
+    //berfungsi untuk menghapus data buku ke database
+    private class HapusBukuAsyncTask extends AsyncTask<String, String, String> {
 
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("Loading...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String respon = "";
+            try {
+                String url = Constrants.URL_BUKU;
+                ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+                SharedPreferences preferences = getActivity()
+                        .getSharedPreferences(Session.PREF_NAME, 0);
+                postParameters.add(new BasicNameValuePair("action", "delete"));
+                postParameters.add(new BasicNameValuePair("id_buku", params[0]));
+
+                respon = CustomHttpClient.executeHttpPost(url, postParameters);
+
+            } catch (Exception e) {
+                respon = e.toString();
+            }
+            return respon;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            progressDialog.dismiss();
+            Log.e("Respon", " -> " + result);
+            try {
+                JSONObject object = new JSONObject(result);
+                if (object.getString("status").equalsIgnoreCase("success")) {
+                    Toast.makeText(getActivity(), "Buku anda telah berhasil di hapus", Toast.LENGTH_LONG).show();
+                    refreshListHapus(pos);
+                } else {
+                    Toast.makeText(getActivity(), "Hapus Buku gagal", Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
+                Log.e("masuk", "-> " + e.getMessage());
+            }
+        }
+    }
 }
