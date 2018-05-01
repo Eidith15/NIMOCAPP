@@ -159,9 +159,10 @@ public class CatatanKeuanganFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
 
                 // selected item
-                String selected = ((TextView) view.findViewById(R.id.id_buku)).getText().toString();
+                String idBuku1 = ((TextView) view.findViewById(R.id.id_buku)).getText().toString();
+                String namaBuku = ((TextView) view.findViewById(R.id.nama_buku)).getText().toString().trim();
 
-                Session.createBukuSession(getActivity(), selected);
+                Session.createBukuSession(getActivity(), idBuku1, namaBuku);
                 ImageView arsipBtn = (ImageView) view.findViewById(R.id.arsip_btn);
                 final String idBuku = ((TextView) listView.getChildAt(i).findViewById(R.id.id_buku)).getText().toString().trim();
                 arsipBtn.setOnClickListener(new View.OnClickListener() {
@@ -173,7 +174,7 @@ public class CatatanKeuanganFragment extends Fragment {
                 });
                 Intent intent = new Intent(getActivity(), DashboardBukuActivity.class);
 
-                Toast toast = Toast.makeText(getActivity(), selected, Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getActivity(), idBuku1, Toast.LENGTH_SHORT);
                 toast.show();
                 startActivity(intent);
             }

@@ -1,6 +1,7 @@
 package com.example.depran.nimoc.function;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,11 @@ public class RiwayatAdapter extends ArrayAdapter<Riwayat> {
 
         TextView nominalTextView = (TextView) listItemView.findViewById(R.id.nominal_riwayat);
         nominalTextView.setText(currentRiwayat.getmNominal());
+        if (currentRiwayat.getKodeP()==1){
+            nominalTextView.setTextColor(Color.GREEN);
+        }else{
+            nominalTextView.setTextColor(Color.RED);
+        }
 
         TextView tanggalTextView = (TextView) listItemView.findViewById(R.id.hariRiwayat);
         tanggalTextView.setText(currentRiwayat.getmTanggal());

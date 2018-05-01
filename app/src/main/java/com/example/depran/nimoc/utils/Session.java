@@ -28,6 +28,7 @@ public class Session {
         pref = context.getSharedPreferences(PREF_NAME, 0);
         editor = pref.edit();
         editor.putString("id_buku", params[0]);
+        editor.putString("nama_buku", params[1]);
         editor.commit();
     }
 

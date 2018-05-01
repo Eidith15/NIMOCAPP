@@ -76,11 +76,7 @@ public class DashboardBukuActivity extends AppCompatActivity {
 //        fragmentTransaction.commit();
     }
 
-    public String ubahKeRupiah(int nominal){
-        Locale localeID = new Locale("in", "ID");
-        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-        return formatRupiah.format((double)nominal);
-    }
+
 
     //berfungsi untuk mengambil data buku ke database
     private class DivisiAsyncTask extends AsyncTask<String, String, String> {

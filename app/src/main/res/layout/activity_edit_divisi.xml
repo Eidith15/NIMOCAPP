@@ -9,12 +9,18 @@
     tools:context=".divisi.EditDivisiActivity">
 
     <TextView
+        android:id="@+id/id_divisi"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        android:text="" />
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nama Divisi" />
 
     <EditText
-        android:id="@+id/namaDivisi"
+        android:id="@+id/nama_divisi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edittextstyle"
@@ -35,7 +41,7 @@
             android:text="Cancel" />
 
         <Button
-            android:id="@+id/btnTambah"
+            android:id="@+id/btnEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
