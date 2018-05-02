@@ -42,9 +42,20 @@ public class TambahBukuKeuanganActivity extends AppCompatActivity {
         findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nmBuku = namaBukuText.getText().toString().trim();
-                String ketBuku = namaBukuText.getText().toString().trim();
-                new TambahBukuKeuanganAsyncTask().execute(nmBuku, ketBuku);
+
+                if(namaBukuText.getText().toString().isEmpty()){
+                    namaBukuText.setError("Nama buku tidak boleh kosong");
+                }else if(namaBukuText.getText().toString().length() < 5){
+                    namaBukuText.setError("Nama buku terlalu pendek");
+                }else if(keteranganBukuText.getText().toString().isEmpty()){
+                    keteranganBukuText.setError("Keterangan tidak boleh kosong");
+                }else if(keteranganBukuText.getText().toString().length() < 5){
+                    keteranganBukuText.setError("Keterangan terlalu pendek");
+                }else{
+                    String nmBuku = namaBukuText.getText().toString().trim();
+                    String ketBuku = namaBukuText.getText().toString().trim();
+                    new TambahBukuKeuanganAsyncTask().execute(nmBuku, ketBuku);
+                }
             }
         });
     }

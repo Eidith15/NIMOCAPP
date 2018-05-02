@@ -41,8 +41,15 @@ public class TambahDivisiActivity extends AppCompatActivity {
         findViewById(R.id.btnTambah).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nmBuku = namaDivisiText.getText().toString().trim();
-                new TambahDivisiAsyncTask().execute(nmBuku);
+
+                if(namaDivisiText.getText().toString().isEmpty()){
+                    namaDivisiText.setError("Nama divisi tidak boleh kosong");
+                }else if(namaDivisiText.getText().toString().length() < 5){
+                    namaDivisiText.setError("Nama divisi terlalu pendek");
+                }else {
+                    String nmBuku = namaDivisiText.getText().toString().trim();
+                    new TambahDivisiAsyncTask().execute(nmBuku);
+                }
             }
         });
     }
