@@ -56,10 +56,10 @@ public class SignInFragment extends Fragment {
                     username.setError("Username tidak boleh kosong");
                 }else if(password.getText().toString().isEmpty()){
                     password.setError("Password tidak boleh kosong");
-                }else if(username.getText().toString().length() < 3) {
-                    username.setError("Username minimal 3 karakter");
-                }else if(password.getText().toString().length() < 3){
-                    password.setError("Password minimal 3 karakter");
+                }else if(username.getText().toString().length() < 5) {
+                    username.setError("Username minimal 5 karakter");
+                }else if(password.getText().toString().length() < 5){
+                    password.setError("Password minimal 5 karakter");
                 }else{
                     String user = username.getText().toString().trim();
                     String pswd = password.getText().toString().trim();

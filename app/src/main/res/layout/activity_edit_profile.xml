@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.android.mymoney.EditProfileActivity">
+    tools:context="com.example.depran.nimoc.user.EditProfileActivity">
 
     <LinearLayout
         android:gravity="center"
@@ -24,34 +24,70 @@
         android:layout_weight="1.5"
         android:layout_width="match_parent"
         android:layout_height="0dp">
+
         <EditText
-            android:hint="Username"
+            android:id="@+id/edtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:drawableLeft="@drawable/ic_account_box_black_24dp"
             android:drawablePadding="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:hint="Username"
+            android:inputType="text"/>
+
         <EditText
-            android:hint="No Telepon"
+            android:id="@+id/edtTelpon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:drawableLeft="@drawable/ic_call_black_24dp"
             android:drawablePadding="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:hint="No Telepon"
+            android:inputType="phone"/>
+
         <EditText
-            android:hint="Email"
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:drawableLeft="@drawable/ic_computer_black_24dp"
             android:drawablePadding="20dp"
-            android:layout_marginBottom="20dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"/>
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:hint="Jenis Kelamin"
+            android:layout_height="wrap_content"
+            android:text="Jenis Kelamin"
             android:drawableLeft="@drawable/ic_people_black_24dp"
-            android:drawablePadding="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="5dp"
+            android:drawablePadding="18dp"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            />
+        <RadioGroup
+            android:id="@+id/jk"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/checkLaki"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="Laki - Laki"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/checkPerempuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="Perempuan"
+                android:textColor="@color/black" />
+        </RadioGroup>
+
     </LinearLayout>
 
     <LinearLayout
@@ -60,7 +96,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnDone"
+            android:id="@+id/btnDoneProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Done" />
