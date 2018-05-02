@@ -50,17 +50,31 @@ public class SignUpFragment extends Fragment {
         password = (EditText) view.findViewById(R.id.txtSignUpPassword);
         rePassword = (EditText) view.findViewById(R.id.txtRePassword);
         btnGoSignUp = (Button) view.findViewById(R.id.btnSignUp);
+
         btnGoSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user = username.getText().toString().trim();
-                String pswd = password.getText().toString().trim();
-                String rePswd = rePassword.getText().toString().trim();
-                if (pswd.equals(rePswd)){
-                    new SignUpAyncTask().execute(user, pswd);
+
+                if(username.getText().toString().isEmpty()){
+                    username.setError("Username tidak boleh kosong");
+                }else if(password.getText().toString().isEmpty()){
+                    password.setError("Password tidak boleh kosong");
+                }else if(username.getText().toString().length() < 3) {
+                    username.setError("Username minimal 3 karakter");
+                }else if(password.getText().toString().length() < 3){
+                    password.setError("Password minimal 3 karakter");
                 }else{
-                    rePassword.setError("password tidak sama");
+                    String user = username.getText().toString().trim();
+                    String pswd = password.getText().toString().trim();
+                    String rePswd = rePassword.getText().toString().trim();
+                    if (pswd.equals(rePswd)){
+                        new SignUpAyncTask().execute(user, pswd);
+                    }else{
+                        rePassword.setError("Password tidak sama");
+                    }
                 }
+
+
             }
         });
         return view;

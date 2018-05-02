@@ -33,7 +33,6 @@ public class SignInFragment extends Fragment {
     private Button btnGoLogin;
     private EditText username;
     private EditText password;
-    private TextView alert;
 
     public static SignInFragment newInstance(LoginActivity activity) {
         loginActivity = activity;
@@ -48,16 +47,24 @@ public class SignInFragment extends Fragment {
 
         username = (EditText) view.findViewById(R.id.txtUsername);
         password = (EditText) view.findViewById(R.id.txtPassword);
-        alert = (TextView) view.findViewById(R.id.txtAlert);
 
         btnGoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user = username.getText().toString().trim();
-                String pswd = password.getText().toString().trim();
 
-                //lakukan validasi sebleum melakukan LoginAsyncTask
-                new LoginAsyncTask().execute(user, pswd) ;
+                if(username.getText().toString().isEmpty()){
+                    username.setError("Username tidak boleh kosong");
+                }else if(password.getText().toString().isEmpty()){
+                    password.setError("Password tidak boleh kosong");
+                }else if(username.getText().toString().length() < 3) {
+                    username.setError("Username minimal 3 karakter");
+                }else if(password.getText().toString().length() < 3){
+                    password.setError("Password minimal 3 karakter");
+                }else{
+                    String user = username.getText().toString().trim();
+                    String pswd = password.getText().toString().trim();
+                    new LoginAsyncTask().execute(user, pswd) ;
+                }
             }
         });
         return view;
