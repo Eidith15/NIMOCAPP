@@ -40,7 +40,7 @@ public class EditBukuKeuanganActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String idBuku = extras.getString("id_buku");
         position = extras.getInt("position");
-        String namaBuku = extras.getString("nama_buku", "");
+        final String namaBuku = extras.getString("nama_buku", "");
         String ketBuku;
         if (extras.getString("ket_buku").isEmpty() || extras.getString("ket_buku").equalsIgnoreCase("null")) {
             ketBuku = "";
@@ -70,12 +70,19 @@ public class EditBukuKeuanganActivity extends AppCompatActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String namaBuku = namaBukuEditText.getText().toString().trim();
-                String ketBuku = ketEditText.getText().toString().trim();
-                String idBuku = idBukuTextView.getText().toString().trim();
+                if(namaBukuEditText.getText().toString().isEmpty()){
+                    namaBukuEditText.setError("Nama buku tidak boleh kosong");
+                }else if(ketEditText.getText().toString().isEmpty()){
+                    ketEditText.setError("Keterangan tidak boleh kosong");
+                }else if(namaBukuEditText.getText().toString().equals(namaBuku)){
+                    namaBukuEditText.setError("Nama buku tidak boleh sama dengan nama sebelumnya");
+                }else{
+                    String namaBuku = namaBukuEditText.getText().toString().trim();
+                    String ketBuku = ketEditText.getText().toString().trim();
+                    String idBuku = idBukuTextView.getText().toString().trim();
 
-                new EditBukuAsyncTask().execute(idBuku, namaBuku, ketBuku);
-
+                    new EditBukuAsyncTask().execute(idBuku, namaBuku, ketBuku);
+                }
             }
         });
 

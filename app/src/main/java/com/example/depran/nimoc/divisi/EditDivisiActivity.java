@@ -46,7 +46,6 @@ public class EditDivisiActivity extends AppCompatActivity {
             namaDivisi = "";
         }else{
             namaDivisi = extras.getString("nama_divisi", "");
-
         }
 
         namaDivisiEditText = (EditText) findViewById(R.id.nama_divisi);
@@ -64,14 +63,20 @@ public class EditDivisiActivity extends AppCompatActivity {
             }
         });
 
+        final String finalNamaDivisi = namaDivisi;
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String namaDivisi = namaDivisiEditText.getText().toString().trim();
-                String idDivisi = idDivisiTextView.getText().toString().trim();
+                if(namaDivisiEditText.getText().toString().isEmpty()){
+                    namaDivisiEditText.setError("Nama divisi tidak boleh kosong");
+                }else if(namaDivisiEditText.getText().toString().equals(finalNamaDivisi)){
+                    namaDivisiEditText.setError("Nama divisi tidak boleh sama dengan nama sebelumnya");
+                }else{
+                    String namaDivisi = namaDivisiEditText.getText().toString().trim();
+                    String idDivisi = idDivisiTextView.getText().toString().trim();
 
-                new EditDivisiAsyncTask().execute(idDivisi, namaDivisi);
-
+                    new EditDivisiAsyncTask().execute(idDivisi, namaDivisi);
+                }
             }
         });
     }

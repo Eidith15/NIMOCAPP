@@ -61,11 +61,18 @@ public class TambahPemasukanActivity extends AppCompatActivity {
         tambahBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nominal = nominalEditText.getText().toString().trim();
-                String ketPemasukkan = ketEditText.getText().toString().trim();
-                Divisi s = (Divisi) spinnerDivisi.getSelectedItem();
-                new  TambahPemasukkanKeuanganAsyncTask().execute(s.idDivisi.toString().trim(),nominal,ketPemasukkan);
-
+                if(nominalEditText.getText().toString().isEmpty()){
+                    nominalEditText.setError("Nominal tidak boleh kosong");
+                }else if(ketEditText.getText().toString().isEmpty()){
+                    ketEditText.setError("Keterangan tidak boleh kosong");
+                }else if(ketEditText.getText().toString().length() < 5){
+                    ketEditText.setError("Keterangan terlalu pendek");
+                }else{
+                    String nominal = nominalEditText.getText().toString().trim();
+                    String ketPemasukkan = ketEditText.getText().toString().trim();
+                    Divisi s = (Divisi) spinnerDivisi.getSelectedItem();
+                    new  TambahPemasukkanKeuanganAsyncTask().execute(s.idDivisi.toString().trim(),nominal,ketPemasukkan);
+                }
             }
         });
 
