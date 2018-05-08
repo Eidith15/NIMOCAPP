@@ -87,20 +87,30 @@ public class CatatanKeuanganFragment extends Fragment {
 
             @Override
             public void create(SwipeMenu menu) {
+                // create "arsip" item
+                SwipeMenuItem arsipBukuItem = new SwipeMenuItem(
+                        getActivity());
+                // set item background
+                arsipBukuItem.setBackground(new ColorDrawable(Color.rgb(0x99, 0x99, 0x99)));
+                // set item width
+                arsipBukuItem.setWidth(170);
+                // set a icon
+                arsipBukuItem.setIcon(R.drawable.ic_archive_black_24dp);
+                // add to menu
+                menu.addMenuItem(arsipBukuItem);
+
+
                 // create "open" item
                 SwipeMenuItem editBukuItem = new SwipeMenuItem(
                         getActivity());
                 // set item background
-                editBukuItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
-                        0xCE)));
+//                editBukuItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,0xCE)));
+
+                editBukuItem.setBackground(new ColorDrawable(Color.rgb(0xFF, 0x98, 0x00)));
                 // set item width
                 editBukuItem.setWidth(170);
-                // set item title
-                editBukuItem.setTitle("Edit");
-                // set item title fontsize
-                editBukuItem.setTitleSize(18);
-                // set item title font color
-                editBukuItem.setTitleColor(Color.WHITE);
+                // set a icon
+                editBukuItem.setIcon(R.drawable.ic_edit_black_24dp);
                 // add to menu
                 menu.addMenuItem(editBukuItem);
 
@@ -132,6 +142,12 @@ public class CatatanKeuanganFragment extends Fragment {
                     case 0:
                         Log.d("click", "edit");
                         Log.d("position", position + "");
+                        pos = position;
+                        new ArsipBukuAsyncTask().execute(idBuku);
+                        break;
+                    case 1:
+                        Log.d("click", "edit");
+                        Log.d("position", position + "");
                         Intent intent = new Intent(getActivity(), EditBukuKeuanganActivity.class);
 
                         String nama_buku_d = ((TextView) listView.getChildAt(position).findViewById(R.id.nama_buku)).getText().toString().trim();
@@ -143,7 +159,7 @@ public class CatatanKeuanganFragment extends Fragment {
                         intent.putExtra("ket_buku", ketBuku);
                         startActivityForResult(intent, 1);
                         break;
-                    case 1:
+                    case 2:
                         Log.d("click", "delete");
                         pos = position;
                         konfirmasiHapus(idBuku);
@@ -163,19 +179,10 @@ public class CatatanKeuanganFragment extends Fragment {
                 String namaBuku = ((TextView) view.findViewById(R.id.nama_buku)).getText().toString().trim();
 
                 Session.createBukuSession(getActivity(), idBuku1, namaBuku);
-                ImageView arsipBtn = (ImageView) view.findViewById(R.id.arsip_btn);
                 final String idBuku = ((TextView) listView.getChildAt(i).findViewById(R.id.id_buku)).getText().toString().trim();
-                arsipBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        pos = i;
-                        new ArsipBukuAsyncTask().execute(idBuku);
-                    }
-                });
                 Intent intent = new Intent(getActivity(), DashboardBukuActivity.class);
-
-                Toast toast = Toast.makeText(getActivity(), idBuku1, Toast.LENGTH_SHORT);
-                toast.show();
+//                Toast toast = Toast.makeText(getActivity(), idBuku1, Toast.LENGTH_SHORT);
+//                toast.show();
                 startActivity(intent);
             }
         });
@@ -200,9 +207,7 @@ public class CatatanKeuanganFragment extends Fragment {
             if (resultCode == RESULT_OK) {
                 Log.d("balasan", data.toString());
 
-                String idBuku = data.getStringExtra("com.example.depran.nimoc.id_buku")
-                        ,namaBuku =data.getStringExtra("com.example.depran.nimoc.nama_buku")
-                        ,ketBuku = data.getStringExtra("com.example.depran.nimoc.ket_buku");
+                String idBuku = data.getStringExtra("com.example.depran.nimoc.id_buku"), namaBuku = data.getStringExtra("com.example.depran.nimoc.nama_buku"), ketBuku = data.getStringExtra("com.example.depran.nimoc.ket_buku");
 
                 int position = data.getIntExtra("com.example.depran.nimoc.position", -99);
 
@@ -216,10 +221,11 @@ public class CatatanKeuanganFragment extends Fragment {
         }
     }
 
-    private void refreshListHapus(int i){
+    private void refreshListHapus(int i) {
         catatanKeuangans.remove(i);
         adapter.notifyDataSetChanged();
     }
+
     private void konfirmasiHapus(final String id) {
         new MaterialDialog.Builder(getActivity())
                 .title(R.string.title_logout)

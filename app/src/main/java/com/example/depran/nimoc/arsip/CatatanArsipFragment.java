@@ -70,15 +70,15 @@ public class CatatanArsipFragment extends Fragment {
                 // selected item
                 final String selected = ((TextView) view.findViewById(R.id.id_buku)).getText().toString();
 
-                ImageView unArsipBtn = (ImageView) view.findViewById(R.id.unarsip_btn);
-                unArsipBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+//                ImageView unArsipBtn = (ImageView) view.findViewById(R.id.unarsip_btn);
+//                unArsipBtn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
 //                        Toast.makeText(getActivity(), "btn click", Toast.LENGTH_SHORT).show();
-                     new UnArsipBukuAsyncTask().execute(selected);
-                     pos = i;
-                    }
-                });
+                new UnArsipBukuAsyncTask().execute(selected);
+                pos = i;
+//                    }
+//                });
 
             }
         });
@@ -90,6 +90,7 @@ public class CatatanArsipFragment extends Fragment {
         catatanKeuangans.remove(i);
         adapter.notifyDataSetChanged();
     }
+
     public static void setCatatanKeuangan(JSONArray jsonArray) throws JSONException {
 
         for (int i = 0; i < jsonArray.length(); i++) {
