@@ -68,7 +68,13 @@ public class BerandaActivity extends AppCompatActivity implements NavigationView
         SharedPreferences preferences = BerandaActivity.this
                 .getSharedPreferences(Session.PREF_NAME, 0);
         String username = preferences.getString("username", null);
+        String email = preferences.getString("email", null);
         namaUser.setText(username);
+        if (email.isEmpty()){
+            emailUser.setText("Klik settings untuk melengkapi profile anda");
+        }else{
+            emailUser.setText(email);
+        }
         new BukuAsyncTask().execute();
     }
 

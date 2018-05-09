@@ -114,9 +114,12 @@ public class SignInFragment extends Fragment {
                     String idUser = object.getJSONObject("data").getString("id_u") ;
                     String username = object.getJSONObject("data").getString("username") ;
                     String password = object.getJSONObject("data").getString("password") ;
+                    String email = object.getJSONObject("data").getString("email") ;
+                    String no_hp = object.getJSONObject("data").getString("no_hp") ;
+                    String jenis_kelamin = object.getJSONObject("data").getString("jenis_kelamin") ;
 
                     //pengisian data idUser, username, password ke Session...
-                    Session.createLoginSession(getActivity(),idUser, username, password);
+                    Session.createLoginSession(getActivity(),idUser, username, password, email, no_hp, jenis_kelamin);
 
                     //Toast.makeText(Login2Activity.this, "Pindah ke BerandaActivity",Toast.LENGTH_LONG).show();
                     startActivity(new Intent(getActivity(), BerandaActivity.class));

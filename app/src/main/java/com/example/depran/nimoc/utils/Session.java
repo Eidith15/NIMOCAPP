@@ -21,6 +21,29 @@ public class Session {
         editor.putString("id_u", params[0]);
         editor.putString("username", params[1]);
         editor.putString("password", params[2]);
+        editor.putString("email", params[3]);
+        editor.putString("no_hp", params[4]);
+        editor.putString("jenis_kelamin", params[5]);
+        editor.commit();
+    }
+
+    public static void updateAccountSession(Context context, String... params) {
+        pref = context.getSharedPreferences(PREF_NAME, 0);
+        editor = pref.edit();
+
+        editor.putString("username", params[0]);
+        editor.putString("email", params[1]);
+        editor.putString("no_hp", params[2]);
+        editor.putString("jenis_kelamin", params[3]);
+        editor.commit();
+    }
+
+    public static void updatePasswordSession(Context context, String... params) {
+        pref = context.getSharedPreferences(PREF_NAME, 0);
+        editor = pref.edit();
+
+        editor.putString("password", params[0]);
+
         editor.commit();
     }
 

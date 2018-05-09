@@ -32,7 +32,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         Thread background = new Thread() {
             public void run() {
                 try {
-                    sleep(3000);
+                    sleep(2000);
                     Intent intent = null;
                     SharedPreferences preferences = SplashScreenActivity.this
                             .getSharedPreferences(Session.PREF_NAME, 0);

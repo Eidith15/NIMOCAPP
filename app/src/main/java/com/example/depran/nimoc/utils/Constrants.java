@@ -16,7 +16,7 @@ public class Constrants {
 //    public static String URL = "http://10.11.12.180/api_nimoc/";
 
     //register / sign up / daftar
-    public static final String URL_ADD_USER = URL + "user_apps";
+    public static final String URL_USER = URL + "user_apps";
 
     //login / sign in / masuk
     public static final String URL_LOGIN = URL + "user_apps";
