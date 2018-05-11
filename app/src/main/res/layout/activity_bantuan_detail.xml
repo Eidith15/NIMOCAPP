@@ -26,7 +26,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     android:text="Deskripsi" />
 
                 <TextView
@@ -47,7 +48,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     android:text="Fungsi" />
 
                 <TextView
@@ -68,7 +70,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     android:text="Cara pakai" />
 
                 <TextView

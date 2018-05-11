@@ -82,7 +82,7 @@ public class SignUpFragment extends Fragment {
     }
 
     private boolean cekKarakterUnik(String s){
-        return s.matches("^[_a-z A-Z]*[[._][a-zA-Z_0-9]]*");
+        return s.matches("^[a-z A-Z]+[[._][a-zA-Z_0-9]]*");
     }
     //berfungsi untuk signup / daftar akun ke database
     private class SignUpAyncTask extends AsyncTask<String, String, String> {
@@ -129,7 +129,7 @@ public class SignUpFragment extends Fragment {
                     Toast.makeText(getActivity(), "Username atau Password anda salah", Toast.LENGTH_LONG).show();
                 }
             } catch(Exception e) {
-                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
                 Log.e("daftar", "-> " + e.getMessage());
             }
         }

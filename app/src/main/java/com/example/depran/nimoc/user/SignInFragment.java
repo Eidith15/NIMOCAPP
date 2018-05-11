@@ -72,7 +72,7 @@ public class SignInFragment extends Fragment {
     }
 
     private boolean cekKarakterUnik(String s){
-        return s.matches("^[_a-z A-Z]*[[._][a-zA-Z_0-9]]*");
+        return s.matches("^[a-z A-Z]+[[._][a-zA-Z_0-9]]*");
     }
         //berfungsi untuk login ke database
     private class LoginAsyncTask extends AsyncTask<String, String, String> {

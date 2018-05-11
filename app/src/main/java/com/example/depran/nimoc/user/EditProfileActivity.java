@@ -107,7 +107,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private boolean cekKarakterUnik(String s) {
-        return s.matches("^[_a-z A-Z]*[[._][a-zA-Z_0-9]]*");
+        return s.matches("^[a-z A-Z]+[[._][a-zA-Z_0-9]]*");
     }
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
