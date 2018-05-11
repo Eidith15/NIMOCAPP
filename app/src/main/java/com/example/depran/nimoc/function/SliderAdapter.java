@@ -39,9 +39,9 @@ public class SliderAdapter extends PagerAdapter {
     };
 
     public String[] slide_content = {
-            "Nimoc merupakan aplikasi keuangan untuk memudahkan setiap organisasi didalam mengatur catatan keuangan",
+            "NiMoC Finance merupakan aplikasi keuangan untuk memudahkan setiap organisasi didalam mengatur catatan keuangan",
             "Memudahkan organisasi untuk mengatur catatan keuangan dari setiap divisi yang ada pada organisasinya",
-            "Dengan menggunakan aplikasi keuangan daru nimoc ini memudahkan setiap organisasi dan tidak membuat sulit untuk membuat laporan keuangan"
+            "Dengan menggunakan aplikasi keuangan dari NiMoC ini memudahkan setiap organisasi dan tidak membuat sulit untuk membuat laporan keuangan"
     };
 
     @Override
