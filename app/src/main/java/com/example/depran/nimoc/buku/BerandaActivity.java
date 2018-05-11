@@ -64,7 +64,6 @@ public class BerandaActivity extends AppCompatActivity implements NavigationView
 
         namaUser = (TextView) headerView.findViewById(R.id.nama_user);
         emailUser = (TextView) headerView.findViewById(R.id.email_user);
-        imageUser= (ImageView) headerView.findViewById(R.id.image_user);
         SharedPreferences preferences = BerandaActivity.this
                 .getSharedPreferences(Session.PREF_NAME, 0);
         String username = preferences.getString("username", null);

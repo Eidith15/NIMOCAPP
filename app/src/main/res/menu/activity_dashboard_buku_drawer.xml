@@ -14,7 +14,7 @@
             android:title="Arsip" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Umum">
         <menu>
             <item
                 android:id="@+id/nav_setting"

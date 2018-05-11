@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                 btnSignIn.setBackgroundResource(R.color.btnLogin);
                 btnSignIn.setTextColor(getResources().getColor(R.color.black));
 
-                btnSignUp.setBackgroundResource(R.color.login);
+                btnSignUp.setBackgroundResource(R.color.colorPrimary);
                 btnSignUp.setTextColor(getResources().getColor(R.color.white));
             }
         });
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 btnSignUp.setBackgroundResource(R.color.btnLogin);
                 btnSignUp.setTextColor(getResources().getColor(R.color.black));
 
-                btnSignIn.setBackgroundResource(R.color.login);
+                btnSignIn.setBackgroundResource(R.color.colorPrimary);
                 btnSignIn.setTextColor(getResources().getColor(R.color.white));
             }
         });

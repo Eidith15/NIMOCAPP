@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NiMoC</string>
+    <string name="app_name">NiMoC Finance</string>
     <string name="title_activity_dashboard_buku">Dashboard Buku</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

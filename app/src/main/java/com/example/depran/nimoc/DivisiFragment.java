@@ -84,17 +84,11 @@ public class DivisiFragment extends Fragment {
                 // create "open" item
                 SwipeMenuItem editBukuItem = new SwipeMenuItem(
                         getActivity());
-                // set item background
-                editBukuItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9,
-                        0xCE)));
+                editBukuItem.setBackground(new ColorDrawable(Color.rgb(0xFF, 0x98, 0x00)));
                 // set item width
                 editBukuItem.setWidth(170);
-                // set item title
-                editBukuItem.setTitle("Edit");
-                // set item title fontsize
-                editBukuItem.setTitleSize(18);
-                // set item title font color
-                editBukuItem.setTitleColor(Color.WHITE);
+                // set a icon
+                editBukuItem.setIcon(R.drawable.ic_edit_black_24dp);
                 // add to menu
                 menu.addMenuItem(editBukuItem);
 
@@ -150,8 +144,8 @@ public class DivisiFragment extends Fragment {
 
                 Session.createDivisiSession(getActivity(), selected);
 
-                Toast toast = Toast.makeText(getActivity(), selected, Toast.LENGTH_SHORT);
-                toast.show();
+//                Toast toast = Toast.makeText(getActivity(), selected, Toast.LENGTH_SHORT);
+//                toast.show();
 //                Intent intent = new Intent(getActivity(), DashboardBukuActivity.class);
 //                startActivity(intent);
             }

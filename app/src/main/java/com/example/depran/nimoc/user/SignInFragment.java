@@ -133,7 +133,7 @@ public class SignInFragment extends Fragment {
                     Toast.makeText(getActivity(), "Username atau Password anda salah", Toast.LENGTH_LONG).show();
                 }
             } catch (Exception e) {
-                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
                 Log.e("masuk","-> "+e.getMessage()) ;
             }
         }

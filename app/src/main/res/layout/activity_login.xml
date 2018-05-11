@@ -46,7 +46,7 @@
         android:layout_alignStart="@+id/contentLayout"
         android:layout_below="@+id/logo"
         android:layout_marginTop="22dp"
-        android:background="#00b386"
+        android:background="@color/colorPrimary"
         android:text="Login"
         android:textColor="#ffffff"
         android:textSize="24dp" />
@@ -72,7 +72,7 @@
         android:layout_marginBottom="100dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="#00b386">
+        android:background="@color/colorPrimary">
 
     </RelativeLayout>
 </RelativeLayout>
