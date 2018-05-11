@@ -3,8 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RiwayatFragment">
+    tools:context=".RiwayatFragment"
+    android:background="@color/white">
 
+    <ImageView
+        android:id="@+id/image_riwayat_empty"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        android:src="@drawable/empty_riwayat_a"/>
     <ListView
         android:id="@+id/lsView"
         android:layout_width="match_parent"
