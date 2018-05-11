@@ -9,58 +9,38 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".buku.DashboardBukuActivity"
     tools:showIn="@layout/app_bar_dashboard_buku">
-
     <LinearLayout
         android:id="@+id/headerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <Button
             android:id="@+id/dashboard_buku_btn"
+            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="dashboard"
-            android:textColor="@color/white" />
-
+            android:text="dashboard"/>
         <Button
             android:id="@+id/dashboard_riwayat_btn"
+            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            android:text="riwayat"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/white"/>
-
+            android:text="riwayat"/>
         <Button
             android:id="@+id/dashboard_divisi_btn"
+            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            android:text="divisi"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/white"/>
+            android:text="divisi"/>
     </LinearLayout>
-
     <FrameLayout
+        app:layout_constraintTop_toBottomOf="@id/headerButton"
         android:id="@+id/frameLayoutBuku"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerButton">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

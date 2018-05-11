@@ -16,19 +16,25 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="dashboard"/>
+            android:text="dashboard"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"/>
         <Button
             android:id="@+id/dashboard_riwayat_btn"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="riwayat"/>
+            android:text="riwayat"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"/>
         <Button
             android:id="@+id/dashboard_divisi_btn"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="divisi"/>
+            android:text="divisi"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"/>
     </LinearLayout>
     <FrameLayout
         app:layout_constraintTop_toBottomOf="@id/headerButton"
