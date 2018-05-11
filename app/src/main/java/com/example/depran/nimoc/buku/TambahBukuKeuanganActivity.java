@@ -42,24 +42,28 @@ public class TambahBukuKeuanganActivity extends AppCompatActivity {
         findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(namaBukuText.getText().toString().isEmpty()){
+                String nmBuku = namaBukuText.getText().toString().trim();
+                String ketBuku = namaBukuText.getText().toString().trim();
+                if(nmBuku.isEmpty()){
                     namaBukuText.setError("Nama buku tidak boleh kosong");
-                }else if(namaBukuText.getText().toString().length() < 5){
+                }else if(nmBuku.length() < 5){
                     namaBukuText.setError("Nama buku terlalu pendek");
-                }else if(keteranganBukuText.getText().toString().isEmpty()){
+                }else if(!cekKarakterAngka(nmBuku)){
+                    namaBukuText.setError("Nama buku hanya boleh ditambahkan angka");
+                }else if(ketBuku.isEmpty()){
                     keteranganBukuText.setError("Keterangan tidak boleh kosong");
-                }else if(keteranganBukuText.getText().toString().length() < 5){
+                }else if(ketBuku.length() < 5){
                     keteranganBukuText.setError("Keterangan terlalu pendek");
                 }else{
-                    String nmBuku = namaBukuText.getText().toString().trim();
-                    String ketBuku = namaBukuText.getText().toString().trim();
                     new TambahBukuKeuanganAsyncTask().execute(nmBuku, ketBuku);
                 }
             }
         });
     }
 
+    private boolean cekKarakterAngka(String s){
+        return s.matches("[a-z A-Z]*[0-9]*");
+    }
     //berfungsi untuk tambah buku ke database
     private class TambahBukuKeuanganAsyncTask extends AsyncTask<String, String, String> {
 

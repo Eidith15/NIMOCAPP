@@ -54,19 +54,20 @@ public class SignUpFragment extends Fragment {
         btnGoSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(username.getText().toString().isEmpty()){
+                String user = username.getText().toString().trim();
+                String pswd = password.getText().toString().trim();
+                String rePswd = rePassword.getText().toString().trim();
+                if(user.isEmpty()){
                     username.setError("Username tidak boleh kosong");
-                }else if(password.getText().toString().isEmpty()){
+                }else if(pswd.isEmpty()){
                     password.setError("Password tidak boleh kosong");
-                }else if(username.getText().toString().length() < 5) {
+                }else if(user.length() < 5) {
                     username.setError("Username minimal 5 karakter");
-                }else if(password.getText().toString().length() < 5){
+                }else if(!cekKarakterUnik(user)){
+                    username.setError("Symbol hanya boleh titik . atau garis bawah _ setelah huruf");
+                }else if(pswd.length() < 5){
                     password.setError("Password minimal 5 karakter");
                 }else{
-                    String user = username.getText().toString().trim();
-                    String pswd = password.getText().toString().trim();
-                    String rePswd = rePassword.getText().toString().trim();
                     if (pswd.equals(rePswd)){
                         new SignUpAyncTask().execute(user, pswd);
                     }else{
@@ -80,6 +81,9 @@ public class SignUpFragment extends Fragment {
         return view;
     }
 
+    private boolean cekKarakterUnik(String s){
+        return s.matches("^[_a-z A-Z]*[[._][a-zA-Z_0-9]]*");
+    }
     //berfungsi untuk signup / daftar akun ke database
     private class SignUpAyncTask extends AsyncTask<String, String, String> {
 
@@ -120,13 +124,11 @@ public class SignUpFragment extends Fragment {
             try {
                 JSONObject object = new JSONObject(result);
                 if (object.getString("status").equalsIgnoreCase("success")) {
-
                     Toast.makeText(getActivity(), "Akun anda telah berhasil di daftarkan", Toast.LENGTH_LONG).show();
-
                 } else {
-//                    Toast.makeText(getActivity(), "Username atau Password anda salah", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Username atau Password anda salah", Toast.LENGTH_LONG).show();
                 }
-            } catch (Exception e) {
+            } catch(Exception e) {
                 Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
                 Log.e("daftar", "-> " + e.getMessage());
             }

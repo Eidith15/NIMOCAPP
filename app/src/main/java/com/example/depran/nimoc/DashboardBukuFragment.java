@@ -66,7 +66,8 @@ public class DashboardBukuFragment extends Fragment {
         totalPemasukkanView = (TextView) view.findViewById(R.id.total_pemasukkan);
         totalPengeluaranView = (TextView) view.findViewById(R.id.total_pengeluaran);
         sisaUang = (TextView) view.findViewById(R.id.sisa_uang);
-
+        setDataKeuangan(0,0);
+        pieChart.setVisibility(View.GONE);
         pengeluaranBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -190,15 +191,16 @@ public class DashboardBukuFragment extends Fragment {
                         totalPengeluaran += object.getInt("total_pengeluaran");
                     }
                     setDataKeuangan(totalPemasukkan, totalPengeluaran);
-
+                    pieChart.setVisibility(View.VISIBLE);
                 } else {
                     setDataKeuangan(0, 0);
-
+                    pieChart.setVisibility(View.GONE);
                 }
 
             } catch (Exception e) {
                 setDataKeuangan(0, 0);
-                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
+                pieChart.setVisibility(View.GONE);
+//                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
                 Log.e("masuk", "-> " + e.getMessage());
             }
         }

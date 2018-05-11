@@ -205,6 +205,8 @@ public class TambahPemasukanActivity extends AppCompatActivity {
                     }
                 }else{
                     //tidak ada divisi
+                    Toast.makeText(TambahPemasukanActivity.this, "Mohon untuk tambah divisi terlebih dahulu", Toast.LENGTH_LONG).show();
+                    finish();
                 }
             } catch (Exception e) {
                 Toast.makeText(TambahPemasukanActivity.this, result.toString(), Toast.LENGTH_LONG).show();

@@ -51,18 +51,19 @@ public class SignInFragment extends Fragment {
         btnGoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(username.getText().toString().isEmpty()){
+                String user = username.getText().toString().trim();
+                String pswd = password.getText().toString().trim();
+                if(user.isEmpty()){
                     username.setError("Username tidak boleh kosong");
-                }else if(password.getText().toString().isEmpty()){
+                }else if(pswd.isEmpty()){
                     password.setError("Password tidak boleh kosong");
-                }else if(username.getText().toString().length() < 5) {
+                }else if(user.length() < 5) {
                     username.setError("Username minimal 5 karakter");
-                }else if(password.getText().toString().length() < 5){
+                }else if(!cekKarakterUnik(user)){
+                    username.setError("Symbol hanya boleh titik . atau garis bawah _ setelah huruf");
+                }else if(pswd.length() < 5){
                     password.setError("Password minimal 5 karakter");
                 }else{
-                    String user = username.getText().toString().trim();
-                    String pswd = password.getText().toString().trim();
                     new LoginAsyncTask().execute(user, pswd) ;
                 }
             }
@@ -70,6 +71,9 @@ public class SignInFragment extends Fragment {
         return view;
     }
 
+    private boolean cekKarakterUnik(String s){
+        return s.matches("^[_a-z A-Z]*[[._][a-zA-Z_0-9]]*");
+    }
         //berfungsi untuk login ke database
     private class LoginAsyncTask extends AsyncTask<String, String, String> {
 

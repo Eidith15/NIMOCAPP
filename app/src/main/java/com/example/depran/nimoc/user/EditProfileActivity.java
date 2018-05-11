@@ -32,7 +32,8 @@ public class EditProfileActivity extends AppCompatActivity {
     RadioButton perempuan, laki;
     Button doneEdit;
     RadioGroup jenisKelamin;
-    String user,telp,mail,jk;
+    String user, telp, mail, jk;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,33 +56,36 @@ public class EditProfileActivity extends AppCompatActivity {
         username.setText(sUsername);
         telepon.setText(sNo_hp);
         email.setText(sEmail);
-        if (sJenis_kelamin.equalsIgnoreCase("0")){
+        if (sJenis_kelamin.equalsIgnoreCase("0")) {
             perempuan.setChecked(true);
-        }else{
+        } else {
             laki.setChecked(true);
         }
 
         doneEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().isEmpty()) {
+
+                user = username.getText().toString().trim();
+                telp = telepon.getText().toString().trim();
+                mail = email.getText().toString().trim();
+                if (user.isEmpty()) {
                     username.setError("Username tidak boleh kosong");
-                } else if (username.getText().toString().length() < 5) {
+                } else if (user.length() < 5) {
                     username.setError("Username minimal 5 karakter");
-                } else if (telepon.getText().toString().isEmpty()) {
+                } else if (!cekKarakterUnik(user)) {
+                    username.setError("Symbol hanya boleh titik . atau garis bawah _ setelah huruf");
+                } else if (telp.isEmpty()) {
                     telepon.setError("No.Telpon tidak boleh kosong");
-                } else if (telepon.getText().toString().length() > 13) {
+                } else if (telp.length() > 13) {
                     telepon.setError("No.Telpon terlalu panjang");
-                } else if (telepon.getText().toString().length() < 5) {
+                } else if (telp.length() < 5) {
                     telepon.setError("No.Telpon terlalu pendek");
-                } else if (email.getText().toString().isEmpty()) {
+                } else if (mail.isEmpty()) {
                     email.setError("Email tidak boleh kosong");
                 } else if (!emailValidate(email.getText().toString().trim())) {
                     email.setError("Email Tidak Valid");
                 } else {
-                    user = username.getText().toString().trim();
-                    telp = telepon.getText().toString().trim();
-                    mail = email.getText().toString().trim();
 
                     if (jenisKelamin.getCheckedRadioButtonId() == -1) {
                         laki.setError("Harus memiilih jenis kelamin");
@@ -93,7 +97,7 @@ public class EditProfileActivity extends AppCompatActivity {
                             jk = "0";
                         }
                         //fungsi add ke database
-                        new EditProfileAsyncTask().execute(user,mail,jk,telp);
+                        new EditProfileAsyncTask().execute(user, mail, jk, telp);
                     }
                 }
             }
@@ -102,11 +106,15 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
+    private boolean cekKarakterUnik(String s) {
+        return s.matches("^[_a-z A-Z]*[[._][a-zA-Z_0-9]]*");
+    }
+
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     public static boolean emailValidate(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
     }
 
@@ -133,7 +141,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 SharedPreferences preferences = EditProfileActivity.this
                         .getSharedPreferences(Session.PREF_NAME, 0);
                 postParameters.add(new BasicNameValuePair("action", "update_account"));
-                postParameters.add(new BasicNameValuePair("id_u", preferences.getString("id_u",null)));
+                postParameters.add(new BasicNameValuePair("id_u", preferences.getString("id_u", null)));
                 postParameters.add(new BasicNameValuePair("username", params[0]));
                 postParameters.add(new BasicNameValuePair("email", params[1]));
                 postParameters.add(new BasicNameValuePair("jenis_kelamin", params[2]));
