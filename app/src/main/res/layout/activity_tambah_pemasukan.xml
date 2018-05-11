@@ -74,23 +74,23 @@
 
                 <Button
                     android:id="@+id/btnCancel"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="137dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
                     android:background="@color/colorAccent"
-                    android:textColor="@color/white"
                     android:text="Cancel"
-                    android:layout_marginRight="5dp"/>
+                    android:textColor="@color/white" />
 
                 <Button
-                    android:layout_marginLeft="5dp"
-                    android:background="@color/colorPrimary"
-                    android:textColor="@color/white"
                     android:id="@+id/btnTambah"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="137dp"
                     android:layout_height="wrap_content"
-                    android:text="Tambah" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:text="Tambah"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
         </LinearLayout>
