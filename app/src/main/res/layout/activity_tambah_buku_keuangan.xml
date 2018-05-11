@@ -52,20 +52,25 @@
 
     <Button
         android:id="@+id/btnCancel"
-        android:layout_width="137dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ttextKet"
         android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginRight="5dp"
         android:layout_marginTop="50dp"
-        android:text="Cancel" />
+        android:background="@color/colorAccent"
+        android:text="Cancel"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/btnAdd"
-        android:layout_width="137dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:layout_alignEnd="@+id/ttextBuku"
         android:layout_alignTop="@+id/btnCancel"
-        android:text="Tambah" />
+        android:background="@color/colorPrimary"
+        android:text="Tambah"
+        android:textColor="@color/white"/>
 
 </RelativeLayout>
