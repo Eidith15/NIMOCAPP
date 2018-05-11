@@ -67,23 +67,31 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnCancel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Cancel" />
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/white"
+                    android:text="Cancel"
+                    android:layout_marginRight="5dp"/>
 
                 <Button
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/white"
                     android:id="@+id/btnTambah"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:text="Tambah" />
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
 

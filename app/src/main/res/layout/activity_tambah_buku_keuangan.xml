@@ -49,6 +49,7 @@
         android:scrollHorizontally="false"
         android:background="@android:drawable/editbox_background"/>
 
+
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="137dp"

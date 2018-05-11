@@ -24,6 +24,7 @@
             android:background="@android:drawable/editbox_background"
             android:drawablePadding="20dp"
             android:hint="Username"
+            android:padding="12dp"
             android:inputType="text" />
 
         <EditText
@@ -34,10 +35,12 @@
             android:drawableLeft="@drawable/ic_call_black_24dp"
             android:background="@android:drawable/editbox_background"
             android:drawablePadding="20dp"
+            android:padding="12dp"
             android:hint="No Telepon"
             android:inputType="phone"/>
 
         <EditText
+            android:padding="12dp"
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,6 +93,8 @@
 
         <Button
             android:id="@+id/btnDoneProfile"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Done" />
