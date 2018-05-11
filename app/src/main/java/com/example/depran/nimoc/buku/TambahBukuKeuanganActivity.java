@@ -43,7 +43,7 @@ public class TambahBukuKeuanganActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String nmBuku = namaBukuText.getText().toString().trim();
-                String ketBuku = namaBukuText.getText().toString().trim();
+                String ketBuku = keteranganBukuText.getText().toString().trim();
                 if(nmBuku.isEmpty()){
                     namaBukuText.setError("Nama buku tidak boleh kosong");
                 }else if(nmBuku.length() < 5){

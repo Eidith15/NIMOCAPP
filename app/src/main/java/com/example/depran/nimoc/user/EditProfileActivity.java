@@ -165,6 +165,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 if (object.getString("status").equalsIgnoreCase("success")) {
                     Session.updateAccountSession(EditProfileActivity.this, user, mail, telp, jk);
                     Toast.makeText(EditProfileActivity.this, "Profile anda berhasil di ubah", Toast.LENGTH_LONG).show();
+                    finish();
                 } else {
                     Toast.makeText(EditProfileActivity.this, "Profile anda gagal di ubah", Toast.LENGTH_LONG).show();
                 }

@@ -143,6 +143,7 @@ public class CatatanKeuanganFragment extends Fragment {
                         Log.d("click", "edit");
                         Log.d("position", position + "");
                         pos = position;
+
                         new ArsipBukuAsyncTask().execute(idBuku);
                         break;
                     case 1:
