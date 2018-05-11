@@ -21,9 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:drawableLeft="@drawable/ic_account_box_black_24dp"
+            android:background="@android:drawable/editbox_background"
             android:drawablePadding="20dp"
             android:hint="Username"
-            android:inputType="text"/>
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/edtTelpon"
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:drawableLeft="@drawable/ic_call_black_24dp"
+            android:background="@android:drawable/editbox_background"
             android:drawablePadding="20dp"
             android:hint="No Telepon"
             android:inputType="phone"/>
@@ -43,7 +45,8 @@
             android:drawableLeft="@drawable/ic_computer_black_24dp"
             android:drawablePadding="20dp"
             android:hint="Email"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:background="@android:drawable/editbox_background"/>
 
         <TextView
             android:layout_width="match_parent"

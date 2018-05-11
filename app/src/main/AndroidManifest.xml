@@ -25,7 +25,7 @@
             android:theme="@style/AwalTheme" />
         <activity
             android:name=".user.LoginActivity"
-            android:theme="@style/LoginTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".buku.DashboardBukuActivity"
             android:label="@string/title_activity_dashboard_buku"

@@ -26,7 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/eBuku"
         android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"/>
+        android:layout_marginRight="35dp"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:background="@android:drawable/editbox_background"/>
 
     <TextView
         android:id="@+id/eKet"
@@ -46,12 +49,12 @@
         android:layout_marginRight="35dp"
         android:gravity="top|left"
         android:inputType="textMultiLine"
+        android:lines="6"
         android:overScrollMode="always"
+        android:scrollHorizontally="false"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
-        android:lines="6"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:scrollHorizontally="false"/>
+        android:background="@android:drawable/editbox_background"/>
 
     <Button
         android:id="@+id/btnCancel"

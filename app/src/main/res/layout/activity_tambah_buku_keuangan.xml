@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tBuku"
         android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"/>
+        android:layout_marginRight="35dp"
+        android:background="@android:drawable/editbox_background"/>
 
     <TextView
         android:id="@+id/tKet"
@@ -45,7 +46,8 @@
         android:scrollbars="vertical"
         android:lines="6"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:scrollHorizontally="false"/>
+        android:scrollHorizontally="false"
+        android:background="@android:drawable/editbox_background"/>
 
     <Button
         android:id="@+id/btnCancel"
