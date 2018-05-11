@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class RiwayatFragment extends Fragment {
     ListView listView;
     ArrayList<Riwayat> riwayats;
     RiwayatAdapter adapter;
+    ImageView imageRiwayatEmpty;
 
     public static RiwayatFragment newInstance(DashboardBukuActivity activity) {
         dashboardBukuActivity = activity;
@@ -53,7 +55,7 @@ public class RiwayatFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = LayoutInflater.from(dashboardBukuActivity).inflate(R.layout.fragment_riwayat, container, false);
         riwayats = new ArrayList<Riwayat>();
-
+        imageRiwayatEmpty = view.findViewById(R.id.image_riwayat_empty);
         adapter = new RiwayatAdapter(getActivity(), riwayats);
         listView = (ListView) view.findViewById(R.id.lsView);
         listView.setAdapter(adapter);
@@ -138,10 +140,11 @@ public class RiwayatFragment extends Fragment {
                         adapter.notifyDataSetChanged();
                     }
                 } else {
+                    imageRiwayatEmpty.setVisibility(View.VISIBLE);
                 }
 
             } catch (Exception e) {
-                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), result.toString(), Toast.LENGTH_LONG).show();
                 Log.e("masuk", "-> " + e.getMessage());
             }
         }
