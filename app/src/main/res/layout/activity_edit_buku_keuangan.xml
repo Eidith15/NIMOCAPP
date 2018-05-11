@@ -64,7 +64,9 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginTop="50dp"
-        android:text="Cancel" />
+        android:text="Cancel"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/btnEdit"
@@ -72,6 +74,8 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/etextBuku"
         android:layout_alignTop="@+id/btnCancel"
-        android:text="Edit" />
+        android:text="Edit"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"/>
 
 </RelativeLayout>
